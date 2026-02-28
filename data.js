@@ -1,0 +1,248 @@
+// Kıskaç Cafe & Bar - Menü Verileri
+const MENU_VERSION = 2; // Arttırılırsa localStorage sıfırlanır
+const DEFAULT_MENU_DATA = {
+    version: MENU_VERSION,
+    restaurant: {
+        name: "Kıskaç Cafe & Bar",
+        slogan: "Denizin En Taze Hali",
+        description: "Deniz ürünleriyle ünlü, eşsiz lezzetlerin adresi",
+        isOpen: true,
+        phone: "",
+        address: "",
+        instagram: "",
+        adminPassword: "kiskac2024"
+    },
+    categories: [
+        { id: "cat-1", name: "Mezeler", icon: "🦐", order: 1 },
+        { id: "cat-2", name: "Sıcaklar", icon: "🔥", order: 2 },
+        { id: "cat-3", name: "Balıklar", icon: "🐟", order: 3 },
+        { id: "cat-4", name: "Salatalar", icon: "🥗", order: 4 },
+        { id: "cat-5", name: "Rakılar", icon: "🥃", order: 5 },
+        { id: "cat-6", name: "Biralar", icon: "🍺", order: 6 },
+        { id: "cat-7", name: "Çerezler", icon: "🥜", order: 7 },
+        { id: "cat-8", name: "İmport Alkol", icon: "🥃", order: 8 },
+        { id: "cat-9", name: "Kokteyller", icon: "🍸", order: 9 },
+        { id: "cat-10", name: "Shotlar", icon: "🥂", order: 10 },
+        { id: "cat-11", name: "Sıcak İçecekler", icon: "☕", order: 11 },
+        { id: "cat-12", name: "Soğuk İçecekler", icon: "🥤", order: 12 },
+        { id: "cat-13", name: "Şaraplar", icon: "🍷", order: 13 }
+    ],
+    items: [
+        // ─── MEZELER ───
+        { id: "m1", categoryId: "cat-1", name: "Süzme", description: "", price: 0, order: 1 },
+        { id: "m2", categoryId: "cat-1", name: "Deniz Börülcesi", description: "", price: 0, order: 2 },
+        { id: "m3", categoryId: "cat-1", name: "Kaya Koruğu", description: "", price: 0, order: 3 },
+        { id: "m4", categoryId: "cat-1", name: "Köz Patlıcan", description: "", price: 0, order: 4 },
+        { id: "m5", categoryId: "cat-1", name: "Ezine", description: "", price: 0, order: 5 },
+        { id: "m6", categoryId: "cat-1", name: "Kuru Domatesli", description: "", price: 0, order: 6 },
+        { id: "m7", categoryId: "cat-1", name: "Haydari", description: "", price: 0, order: 7 },
+        { id: "m8", categoryId: "cat-1", name: "Izgara Zeytin", description: "", price: 0, order: 8 },
+        { id: "m9", categoryId: "cat-1", name: "Midye Söğüş", description: "", price: 0, order: 9 },
+        { id: "m10", categoryId: "cat-1", name: "Yeşil Zeytin", description: "", price: 0, order: 10 },
+        { id: "m11", categoryId: "cat-1", name: "Humus", description: "", price: 0, order: 11 },
+        { id: "m12", categoryId: "cat-1", name: "Atom", description: "", price: 0, order: 12 },
+        { id: "m13", categoryId: "cat-1", name: "Mütebbel", description: "", price: 0, order: 13 },
+        { id: "m14", categoryId: "cat-1", name: "Fava", description: "", price: 0, order: 14 },
+        { id: "m15", categoryId: "cat-1", name: "Lakerda", description: "", price: 0, order: 15 },
+        { id: "m16", categoryId: "cat-1", name: "Kereviz", description: "", price: 0, order: 16 },
+        { id: "m17", categoryId: "cat-1", name: "Pancar", description: "", price: 0, order: 17 },
+        { id: "m18", categoryId: "cat-1", name: "Levrek Marin", description: "", price: 0, order: 18 },
+        { id: "m19", categoryId: "cat-1", name: "Girit Ezmesi", description: "", price: 0, order: 19 },
+        { id: "m20", categoryId: "cat-1", name: "Havuç Tarator", description: "", price: 0, order: 20 },
+        { id: "m21", categoryId: "cat-1", name: "Tahin Tarator", description: "", price: 0, order: 21 },
+        { id: "m22", categoryId: "cat-1", name: "Fesleğenli Mezgit", description: "", price: 0, order: 22 },
+        { id: "m23", categoryId: "cat-1", name: "Sübye Marin", description: "", price: 0, order: 23 },
+        { id: "m24", categoryId: "cat-1", name: "Somon Füme", description: "", price: 0, order: 24 },
+        { id: "m25", categoryId: "cat-1", name: "Şakşuka", description: "", price: 0, order: 25 },
+        { id: "m26", categoryId: "cat-1", name: "Cacık", description: "", price: 0, order: 26 },
+        { id: "m27", categoryId: "cat-1", name: "Rus Salatası", description: "", price: 0, order: 27 },
+        { id: "m28", categoryId: "cat-1", name: "Yoğurtlu Patlıcan", description: "", price: 0, order: 28 },
+        { id: "m29", categoryId: "cat-1", name: "İzmir Ezmesi", description: "", price: 0, order: 29 },
+        { id: "m30", categoryId: "cat-1", name: "Ispanak", description: "", price: 0, order: 30 },
+        { id: "m31", categoryId: "cat-1", name: "Deniz Special", description: "", price: 0, order: 31 },
+        { id: "m32", categoryId: "cat-1", name: "Et Füme", description: "", price: 0, order: 32 },
+        { id: "m33", categoryId: "cat-1", name: "Arnavut Ciğeri", description: "", price: 0, order: 33 },
+        { id: "m34", categoryId: "cat-1", name: "Brokoli", description: "", price: 0, order: 34 },
+
+        // ─── SICAKLAR ───
+        { id: "s1", categoryId: "cat-2", name: "Yengeç", description: "", price: 0, order: 1 },
+        { id: "s2", categoryId: "cat-2", name: "Yengeç Dolma", description: "", price: 0, order: 2 },
+        { id: "s3", categoryId: "cat-2", name: "Karides", description: "Buharda pişmiş", price: 0, order: 3 },
+        { id: "s4", categoryId: "cat-2", name: "Karides Güveç", description: "", price: 0, order: 4 },
+        { id: "s5", categoryId: "cat-2", name: "Otlu Karides Güveç", description: "", price: 0, order: 5 },
+        { id: "s6", categoryId: "cat-2", name: "Ahtapot", description: "", price: 0, order: 6 },
+        { id: "s7", categoryId: "cat-2", name: "Kalamar", description: "", price: 0, order: 7 },
+        { id: "s8", categoryId: "cat-2", name: "Midye Tava", description: "", price: 0, order: 8 },
+        { id: "s9", categoryId: "cat-2", name: "Midye Dolma", description: "", price: 0, order: 9 },
+        { id: "s10", categoryId: "cat-2", name: "Bira Tabağı", description: "", price: 0, order: 10 },
+        { id: "s11", categoryId: "cat-2", name: "Çıtır Tavuk", description: "", price: 0, order: 11 },
+        { id: "s12", categoryId: "cat-2", name: "Sigara Böreği", description: "", price: 0, order: 12 },
+        { id: "s13", categoryId: "cat-2", name: "Parmak Cips", description: "", price: 0, order: 13 },
+        { id: "s14", categoryId: "cat-2", name: "Elma Cips", description: "", price: 0, order: 14 },
+        { id: "s15", categoryId: "cat-2", name: "Köylü Patates", description: "", price: 0, order: 15 },
+        { id: "s16", categoryId: "cat-2", name: "Nohut", description: "", price: 0, order: 16 },
+        { id: "s17", categoryId: "cat-2", name: "Haşlanmış Fıstık", description: "", price: 0, order: 17 },
+        { id: "s18", categoryId: "cat-2", name: "Karides Cips", description: "", price: 0, order: 18 },
+        { id: "s19", categoryId: "cat-2", name: "Güveçte Mantar", description: "", price: 0, order: 19 },
+        { id: "s20", categoryId: "cat-2", name: "Fette", description: "", price: 0, order: 20 },
+        { id: "s21", categoryId: "cat-2", name: "Somon Burger", description: "", price: 0, order: 21 },
+        { id: "s22", categoryId: "cat-2", name: "Kokteyl Şiş", description: "", price: 0, order: 22 },
+        { id: "s23", categoryId: "cat-2", name: "Karidesli Çıtır Ekmek", description: "", price: 0, order: 23 },
+        { id: "s24", categoryId: "cat-2", name: "Sea Food Boil", description: "", price: 0, order: 24 },
+        { id: "s25", categoryId: "cat-2", name: "Burrito", description: "", price: 0, order: 25 },
+        { id: "s26", categoryId: "cat-2", name: "Saç Kavurma", description: "", price: 0, order: 26 },
+        { id: "s27", categoryId: "cat-2", name: "Biber Dolma", description: "", price: 0, order: 27 },
+        { id: "s28", categoryId: "cat-2", name: "Avokado Dolma", description: "", price: 0, order: 28 },
+        { id: "s29", categoryId: "cat-2", name: "Peynir Tabağı", description: "", price: 0, order: 29 },
+
+        // ─── BALIKLAR ───
+        { id: "b1", categoryId: "cat-3", name: "Levrek", description: "", price: 0, order: 1 },
+        { id: "b2", categoryId: "cat-3", name: "Çipura", description: "", price: 0, order: 2 },
+        { id: "b3", categoryId: "cat-3", name: "Barbun", description: "", price: 0, order: 3 },
+        { id: "b4", categoryId: "cat-3", name: "Hamsi", description: "", price: 0, order: 4 },
+
+        // ─── SALATALAR ───
+        { id: "sl1", categoryId: "cat-4", name: "Roka Salatası", description: "", price: 0, order: 1 },
+        { id: "sl2", categoryId: "cat-4", name: "Mevsim Salatası", description: "", price: 0, order: 2 },
+        { id: "sl3", categoryId: "cat-4", name: "Çoban Salatası", description: "", price: 0, order: 3 },
+        { id: "sl4", categoryId: "cat-4", name: "Gavurdağı Salatası", description: "", price: 0, order: 4 },
+        { id: "sl5", categoryId: "cat-4", name: "Zeytin Salatası", description: "", price: 0, order: 5 },
+        { id: "sl6", categoryId: "cat-4", name: "Yeşil Salata", description: "", price: 0, order: 6 },
+        { id: "sl7", categoryId: "cat-4", name: "Kaşık Salata", description: "", price: 0, order: 7 },
+
+        // ─── RAKILAR ───
+        { id: "r1", categoryId: "cat-5", name: "Tekirdağ Altınseri 35cl", description: "", price: 0, order: 1 },
+        { id: "r2", categoryId: "cat-5", name: "Tekirdağ Altınseri 50cl", description: "", price: 0, order: 2 },
+        { id: "r3", categoryId: "cat-5", name: "Tekirdağ Altınseri 70cl", description: "", price: 0, order: 3 },
+        { id: "r4", categoryId: "cat-5", name: "Tekirdağ Altınseri 100cl", description: "", price: 0, order: 4 },
+        { id: "r5", categoryId: "cat-5", name: "Efe Gold 35cl", description: "", price: 0, order: 5 },
+        { id: "r6", categoryId: "cat-5", name: "Efe Gold 50cl", description: "", price: 0, order: 6 },
+        { id: "r7", categoryId: "cat-5", name: "Efe Gold 70cl", description: "", price: 0, order: 7 },
+        { id: "r8", categoryId: "cat-5", name: "Efe Gold 100cl", description: "", price: 0, order: 8 },
+        { id: "r9", categoryId: "cat-5", name: "Yeni Rakı 35cl", description: "", price: 0, order: 9 },
+        { id: "r10", categoryId: "cat-5", name: "Yeni Rakı 50cl", description: "", price: 0, order: 10 },
+        { id: "r11", categoryId: "cat-5", name: "Yeni Rakı 70cl", description: "", price: 0, order: 11 },
+        { id: "r12", categoryId: "cat-5", name: "Yeni Rakı 100cl", description: "", price: 0, order: 12 },
+        { id: "r13", categoryId: "cat-5", name: "Beylerbeyi Göbek 35cl", description: "", price: 0, order: 13 },
+        { id: "r14", categoryId: "cat-5", name: "Beylerbeyi Göbek 50cl", description: "", price: 0, order: 14 },
+        { id: "r15", categoryId: "cat-5", name: "Beylerbeyi Göbek 70cl", description: "", price: 0, order: 15 },
+        { id: "r16", categoryId: "cat-5", name: "Beylerbeyi Göbek 100cl", description: "", price: 0, order: 16 },
+
+        // ─── BİRALAR ───
+        { id: "br1", categoryId: "cat-6", name: "Efes Fıçı 33cl", description: "", price: 0, order: 1 },
+        { id: "br2", categoryId: "cat-6", name: "Efes Fıçı 50cl", description: "", price: 0, order: 2 },
+        { id: "br3", categoryId: "cat-6", name: "Efes Fıçı 70cl", description: "", price: 0, order: 3 },
+        { id: "br4", categoryId: "cat-6", name: "Efes Fıçı 100cl", description: "", price: 0, order: 4 },
+        { id: "br5", categoryId: "cat-6", name: "Efes +1", description: "", price: 0, order: 5 },
+        { id: "br6", categoryId: "cat-6", name: "Efes Malt", description: "", price: 0, order: 6 },
+        { id: "br7", categoryId: "cat-6", name: "Özel Seri", description: "", price: 0, order: 7 },
+        { id: "br8", categoryId: "cat-6", name: "Glutensiz", description: "", price: 0, order: 8 },
+        { id: "br9", categoryId: "cat-6", name: "Bomonti Filtresiz", description: "", price: 0, order: 9 },
+        { id: "br10", categoryId: "cat-6", name: "Bud", description: "", price: 0, order: 10 },
+        { id: "br11", categoryId: "cat-6", name: "Becks", description: "", price: 0, order: 11 },
+        { id: "br12", categoryId: "cat-6", name: "Amsterdam", description: "", price: 0, order: 12 },
+        { id: "br13", categoryId: "cat-6", name: "Miller", description: "", price: 0, order: 13 },
+        { id: "br14", categoryId: "cat-6", name: "Miller Lime", description: "", price: 0, order: 14 },
+        { id: "br15", categoryId: "cat-6", name: "Corona", description: "", price: 0, order: 15 },
+        { id: "br16", categoryId: "cat-6", name: "Belfast", description: "", price: 0, order: 16 },
+        { id: "br17", categoryId: "cat-6", name: "Stella", description: "", price: 0, order: 17 },
+
+        // ─── ÇEREZLER ───
+        { id: "c1", categoryId: "cat-7", name: "Karışık Çerez", description: "", price: 0, order: 1 },
+        { id: "c2", categoryId: "cat-7", name: "Antep Fıstığı", description: "", price: 0, order: 2 },
+        { id: "c3", categoryId: "cat-7", name: "Tuzlu Fıstık", description: "", price: 0, order: 3 },
+        { id: "c4", categoryId: "cat-7", name: "Buzlu Badem", description: "", price: 0, order: 4 },
+        { id: "c5", categoryId: "cat-7", name: "Mimoza", description: "", price: 0, order: 5 },
+        { id: "c6", categoryId: "cat-7", name: "Turşu", description: "", price: 0, order: 6 },
+
+        // ─── İMPORT ALKOL ───
+        { id: "ia1", categoryId: "cat-8", name: "Votka Tek", description: "", price: 0, order: 1 },
+        { id: "ia2", categoryId: "cat-8", name: "Votka Duble", description: "", price: 0, order: 2 },
+        { id: "ia3", categoryId: "cat-8", name: "Chivas Tek", description: "", price: 0, order: 3 },
+        { id: "ia4", categoryId: "cat-8", name: "Chivas Duble", description: "", price: 0, order: 4 },
+        { id: "ia5", categoryId: "cat-8", name: "Black Label Tek", description: "", price: 0, order: 5 },
+        { id: "ia6", categoryId: "cat-8", name: "Black Label Duble", description: "", price: 0, order: 6 },
+        { id: "ia7", categoryId: "cat-8", name: "Jack Daniels Tek", description: "", price: 0, order: 7 },
+        { id: "ia8", categoryId: "cat-8", name: "Jack Daniels Duble", description: "", price: 0, order: 8 },
+        { id: "ia9", categoryId: "cat-8", name: "Chivas 35cl", description: "Şişe", price: 0, order: 9 },
+        { id: "ia10", categoryId: "cat-8", name: "Chivas 50cl", description: "Şişe", price: 0, order: 10 },
+        { id: "ia11", categoryId: "cat-8", name: "Chivas 70cl", description: "Şişe", price: 0, order: 11 },
+        { id: "ia12", categoryId: "cat-8", name: "Chivas 100cl", description: "Şişe", price: 0, order: 12 },
+
+        // ─── KOKTEYLLER ───
+        { id: "k1", categoryId: "cat-9", name: "Mojito", description: "", price: 0, order: 1 },
+        { id: "k2", categoryId: "cat-9", name: "Cuba Libre", description: "", price: 0, order: 2 },
+        { id: "k3", categoryId: "cat-9", name: "Margarita", description: "", price: 0, order: 3 },
+        { id: "k4", categoryId: "cat-9", name: "Gin Tonic", description: "", price: 0, order: 4 },
+        { id: "k5", categoryId: "cat-9", name: "Gin Fizz", description: "", price: 0, order: 5 },
+        { id: "k6", categoryId: "cat-9", name: "Long Island", description: "", price: 0, order: 6 },
+
+        // ─── SHOTLAR ───
+        { id: "sh1", categoryId: "cat-10", name: "Olmeca Tekila", description: "", price: 0, order: 1 },
+        { id: "sh2", categoryId: "cat-10", name: "Olmeca Dark Chocolate", description: "", price: 0, order: 2 },
+        { id: "sh3", categoryId: "cat-10", name: "Jäger Cold Brew Coffee", description: "", price: 0, order: 3 },
+        { id: "sh4", categoryId: "cat-10", name: "Jäger Orange", description: "", price: 0, order: 4 },
+        { id: "sh5", categoryId: "cat-10", name: "Jägermeister", description: "", price: 0, order: 5 },
+        { id: "sh6", categoryId: "cat-10", name: "Baileys", description: "", price: 0, order: 6 },
+
+        // ─── SICAK İÇECEKLER ───
+        { id: "si1", categoryId: "cat-11", name: "Çay", description: "", price: 0, order: 1 },
+        { id: "si2", categoryId: "cat-11", name: "Fincan Çay", description: "", price: 0, order: 2 },
+        { id: "si3", categoryId: "cat-11", name: "Nescafe Sütlü", description: "", price: 0, order: 3 },
+        { id: "si4", categoryId: "cat-11", name: "Nescafe Sade", description: "", price: 0, order: 4 },
+        { id: "si5", categoryId: "cat-11", name: "Türk Kahvesi Sade", description: "", price: 0, order: 5 },
+        { id: "si6", categoryId: "cat-11", name: "Türk Kahvesi Orta", description: "", price: 0, order: 6 },
+        { id: "si7", categoryId: "cat-11", name: "Türk Kahvesi Şekerli", description: "", price: 0, order: 7 },
+
+        // ─── SOĞUK İÇECEKLER ───
+        { id: "so1", categoryId: "cat-12", name: "Cola", description: "", price: 0, order: 1 },
+        { id: "so2", categoryId: "cat-12", name: "Fanta", description: "", price: 0, order: 2 },
+        { id: "so3", categoryId: "cat-12", name: "Sprite", description: "", price: 0, order: 3 },
+        { id: "so4", categoryId: "cat-12", name: "Fuse Tea Şeftali", description: "", price: 0, order: 4 },
+        { id: "so5", categoryId: "cat-12", name: "Fuse Tea Karpuz", description: "", price: 0, order: 5 },
+        { id: "so6", categoryId: "cat-12", name: "Fuse Tea Mango", description: "", price: 0, order: 6 },
+        { id: "so7", categoryId: "cat-12", name: "Redbull", description: "", price: 0, order: 7 },
+        { id: "so8", categoryId: "cat-12", name: "Redbull Şekersiz", description: "", price: 0, order: 8 },
+        { id: "so9", categoryId: "cat-12", name: "Soda", description: "", price: 0, order: 9 },
+        { id: "so10", categoryId: "cat-12", name: "Churchill", description: "", price: 0, order: 10 },
+        { id: "so11", categoryId: "cat-12", name: "Büyük Su", description: "", price: 0, order: 11 },
+        { id: "so12", categoryId: "cat-12", name: "Küçük Su", description: "", price: 0, order: 12 },
+        { id: "so13", categoryId: "cat-12", name: "Büyük Şalgam", description: "", price: 0, order: 13 },
+        { id: "so14", categoryId: "cat-12", name: "Küçük Şalgam", description: "", price: 0, order: 14 },
+
+        // ─── ŞARAPLAR ───
+        { id: "sr1", categoryId: "cat-13", name: "Quattro Kırmızı", description: "", price: 0, order: 1 },
+        { id: "sr2", categoryId: "cat-13", name: "Quattro Pembe", description: "", price: 0, order: 2 },
+        { id: "sr3", categoryId: "cat-13", name: "Quattro Beyaz", description: "", price: 0, order: 3 }
+    ]
+};
+
+// localStorage'a ilk yükleme (versiyon kontrolü ile)
+function initializeData() {
+    const existing = localStorage.getItem('kiskac_menu_data');
+    if (!existing) {
+        localStorage.setItem('kiskac_menu_data', JSON.stringify(DEFAULT_MENU_DATA));
+    } else {
+        const parsed = JSON.parse(existing);
+        if (!parsed.version || parsed.version < MENU_VERSION) {
+            // Eski veri yapısı — yeni versiyon ile güncelle
+            localStorage.setItem('kiskac_menu_data', JSON.stringify(DEFAULT_MENU_DATA));
+        }
+    }
+}
+
+function getMenuData() {
+    const data = localStorage.getItem('kiskac_menu_data');
+    return data ? JSON.parse(data) : DEFAULT_MENU_DATA;
+}
+
+function saveMenuData(data) {
+    localStorage.setItem('kiskac_menu_data', JSON.stringify(data));
+}
+
+function generateId() {
+    return 'id-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+}
+
+// Sayfa yüklendiğinde verileri başlat
+initializeData();

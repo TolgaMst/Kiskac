@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Kıskaç Cafe & Bar — Deniz ürünleriyle ünlü, eşsiz lezzetlerin adresi. QR Menü ile menümüzü keşfedin.">
+    <meta name="theme-color" content="#0a1628">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Kıskaç Cafe & Bar — QR Menü</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🦀</text></svg>">
+</head>
+
+<body>
+
+    <!-- Wave Background -->
+    <div class="wave-bg"></div>
+
+    <!-- Bubbles -->
+    <div class="bubbles" id="bubbles"></div>
+
+    <!-- ====== SPLASH SCREEN ====== -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo"><img src="logo.png" alt="Kıskaç Logo" class="splash-logo-img"></div>
+        <h1 class="splash-name" id="splashName">Kıskaç Cafe & Bar</h1>
+        <p class="splash-slogan" id="splashSlogan">Denizin En Taze Hali</p>
+        <div class="splash-status" id="splashStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Açık</span>
+        </div>
+        <button class="splash-btn" id="splashBtn">
+            Menüyü Gör
+            <span>→</span>
+        </button>
+    </div>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <div class="main-content" id="mainContent">
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-inner">
+                <div class="navbar-brand">
+                    <div class="navbar-logo"><img src="logo.png" alt="Kıskaç" class="navbar-logo-img"></div>
+                    <span class="navbar-title" id="navTitle">Kıskaç Cafe & Bar</span>
+                </div>
+                <div class="navbar-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Açık</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Category Navigation -->
+        <div class="category-nav">
+            <div class="category-scroll" id="categoryScroll">
+                <!-- JS ile doldurulacak -->
+            </div>
+        </div>
+
+        <!-- Menu Content -->
+        <div class="menu-container" id="menuContainer">
+            <!-- JS ile doldurulacak -->
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-brand" id="footerBrand">Kıskaç Cafe & Bar</div>
+            <div class="footer-divider"></div>
+            <p class="footer-text">Deniz ürünleriyle ünlü, eşsiz lezzetlerin adresi</p>
+            <p class="footer-text" style="margin-top: 10px; opacity: 0.6;">© 2026 Kıskaç Cafe & Bar. Tüm hakları
+                saklıdır.</p>
+            <div class="footer-links">
+                <a href="admin.html" class="footer-link" style="opacity: 0.3; font-size: 0.7rem;">Yönetim</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="Yukarı çık">↑</button>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

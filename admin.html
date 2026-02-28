@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Kıskaç Cafe & Bar — Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>">
+</head>
+
+<body>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ====== LOGIN SCREEN ====== -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="login-icon">🦀</div>
+            <h1 class="login-title">Kıskaç Admin</h1>
+            <p class="login-subtitle">Menü yönetim paneline giriş yapın</p>
+            <form id="loginForm">
+                <div class="login-input-group">
+                    <input type="password" class="login-input" id="loginPassword" placeholder="Şifrenizi girin..."
+                        autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="login-btn">Giriş Yap</button>
+                <p class="login-error" id="loginError">❌ Yanlış şifre. Tekrar deneyin.</p>
+            </form>
+            <a href="index.html" class="login-back">← Menüye Dön</a>
+        </div>
+    </div>
+
+    <!-- ====== ADMIN LAYOUT ====== -->
+    <div class="admin-layout" id="adminLayout">
+
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-brand">
+                <span class="admin-brand-icon">🦀</span>
+                <span class="admin-brand-text">Kıskaç Admin</span>
+                <span class="admin-brand-badge">Menü Yönetimi</span>
+            </div>
+            <div class="admin-header-actions">
+                <a href="index.html" class="btn btn-ghost" target="_blank">👁️ Menüyü Gör</a>
+                <button class="btn btn-ghost" id="logoutBtn">🚪 Çıkış</button>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="dashboard">📊 Dashboard</button>
+            <button class="admin-tab" data-tab="categories">📁 Kategoriler</button>
+            <button class="admin-tab" data-tab="items">🍽️ Ürünler</button>
+            <button class="admin-tab" data-tab="settings">⚙️ Ayarlar</button>
+        </div>
+
+        <!-- Content -->
+        <div class="admin-content">
+
+            <!-- Dashboard Panel -->
+            <div class="tab-panel active" id="panel-dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📁</div>
+                        <div class="stat-value" id="statCategories">0</div>
+                        <div class="stat-label">Kategori</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🍽️</div>
+                        <div class="stat-value" id="statItems">0</div>
+                        <div class="stat-label">Toplam Ürün</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-value" id="statPriced">0</div>
+                        <div class="stat-label">Fiyatlı Ürün</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-value" id="statUnpriced">0</div>
+                        <div class="stat-label">Fiyat Girilmemiş</div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="panel-header">
+                        <span class="panel-title">💾 Veri Yedekleme</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="backup-section">
+                            <button class="btn btn-primary" id="exportBtn">📥 JSON Olarak İndir</button>
+                            <button class="btn btn-ghost" id="importBtn">📤 JSON'dan Yükle</button>
+                            <input type="file" id="importFile" accept=".json" style="display:none">
+                        </div>
+                        <p class="backup-info">Menü verilerinizi JSON dosyası olarak yedekleyin veya daha önce aldığınız
+                            yedeği geri yükleyin.</p>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="panel-header">
+                        <span class="panel-title">⚠️ Tehlikeli Bölge</span>
+                    </div>
+                    <div class="panel-body">
+                        <button class="btn btn-danger" id="resetDataBtn">🔄 Verileri Sıfırla</button>
+                        <p class="backup-info">Tüm menü verilerini varsayılan hale getirir. Bu işlem geri alınamaz!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Panel -->
+            <div class="tab-panel" id="panel-categories">
+                <div class="panel-section">
+                    <div class="panel-header">
+                        <span class="panel-title">📁 Kategoriler</span>
+                        <button class="btn btn-primary btn-sm" id="addCategoryBtn">+ Yeni Kategori</button>
+                    </div>
+                    <div class="panel-body" style="padding: 0;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Kategori Adı</th>
+                                    <th>Ürün Sayısı</th>
+                                    <th>Sıra</th>
+                                    <th style="text-align:right">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoriesTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Panel -->
+            <div class="tab-panel" id="panel-items">
+                <div class="panel-section">
+                    <div class="panel-header">
+                        <span class="panel-title">🍽️ Ürünler</span>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <select class="form-select" id="itemCategoryFilter"
+                                style="padding:6px 10px; font-size:0.8rem;">
+                                <option value="all">Tüm Kategoriler</option>
+                            </select>
+                            <button class="btn btn-primary btn-sm" id="addItemBtn">+ Yeni Ürün</button>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="padding: 0;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <th>Kategori</th>
+                                    <th>Fiyat</th>
+                                    <th>Sıra</th>
+                                    <th style="text-align:right">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemsTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Panel -->
+            <div class="tab-panel" id="panel-settings">
+                <div class="panel-section">
+                    <div class="panel-header">
+                        <span class="panel-title">🏪 Restoran Bilgileri</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Restoran Adı</label>
+                                <input type="text" class="form-input" id="restName">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Slogan</label>
+                                <input type="text" class="form-input" id="restSlogan">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Telefon</label>
+                                <input type="tel" class="form-input" id="restPhone">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Instagram</label>
+                                <input type="text" class="form-input" id="restInstagram" placeholder="@kiskaccafebar">
+                            </div>
+                            <div class="form-group full-width">
+                                <label class="form-label">Adres</label>
+                                <textarea class="form-textarea" id="restAddress" rows="2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex; align-items:center; gap:8px;">
+                                    <input type="checkbox" id="restIsOpen" checked>
+                                    Restoran Açık
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary" id="saveRestaurantBtn">💾 Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="panel-header">
+                        <span class="panel-title">🔑 Şifre Değiştir</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label class="form-label">Mevcut Şifre</label>
+                                <input type="password" class="form-input" id="currentPassword">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Yeni Şifre</label>
+                                <input type="password" class="form-input" id="newPassword">
+                            </div>
+                            <div class="form-actions" style="justify-content: flex-start;">
+                                <button class="btn btn-primary" id="changePasswordBtn">🔐 Şifreyi Değiştir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ====== MODAL ====== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Ekle / Düzenle</h3>
+                <button class="modal-close" id="modalCloseBtn">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- Category Form -->
+                <div id="categoryForm" style="display:none">
+                    <div class="form-group" style="margin-bottom:16px">
+                        <label class="form-label">Kategori Adı *</label>
+                        <input type="text" class="form-input" id="catName" placeholder="Örn: Deniz Ürünleri">
+                    </div>
+                    <div class="form-group" style="margin-bottom:16px">
+                        <label class="form-label">İkon (Emoji)</label>
+                        <input type="text" class="form-input" id="catIcon" placeholder="🐟" maxlength="4">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Sıra Numarası</label>
+                        <input type="number" class="form-input" id="catOrder" placeholder="1" min="1">
+                    </div>
+                </div>
+
+                <!-- Item Form -->
+                <div id="itemForm" style="display:none">
+                    <div class="form-group" style="margin-bottom:16px">
+                        <label class="form-label">Ürün Adı *</label>
+                        <input type="text" class="form-input" id="itemName" placeholder="Örn: Karides Güveç">
+                    </div>
+                    <div class="form-group" style="margin-bottom:16px">
+                        <label class="form-label">Açıklama</label>
+                        <textarea class="form-textarea" id="itemDescription"
+                            placeholder="Ürün açıklaması (isteğe bağlı)" rows="2"></textarea>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Kategori *</label>
+                            <select class="form-select" id="itemCategory"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fiyat (₺)</label>
+                            <input type="text" class="form-input" id="itemPrice" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Sıra Numarası</label>
+                            <input type="number" class="form-input" id="itemOrder" placeholder="1" min="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="modalCancelBtn">İptal</button>
+                <button class="btn btn-primary" id="modalSaveBtn">💾 Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
