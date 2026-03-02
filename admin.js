@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveMenuData(data);
         refreshAll();
         showToast('Kategori silindi', 'success');
+        pushToGitHub(data);
     };
 
     // ---- ITEMS ----
@@ -257,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveMenuData(data);
         refreshAll();
         showToast('Ürün silindi', 'success');
+        pushToGitHub(data);
     };
 
     // ---- MODAL ----
@@ -351,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveMenuData(data);
         refreshAll();
         closeModal();
+        pushToGitHub(data);
     });
 
     // ---- EXPORT / IMPORT ----
