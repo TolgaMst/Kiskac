@@ -14,7 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
             searchPlaceholder: "Ürün ara...",
             emptyMenu: "Menü yakında güncellenecek...",
             rights: "Tüm hakları saklıdır.",
-            management: "Yönetim"
+            management: "Yönetim",
+            info: "Bilgi",
+            businessInfo: "İşletme Bilgileri",
+            address: "Adres",
+            phone: "Telefon",
+            openingHours: "Çalışma Saatleri",
+            social: "Sosyal Medya",
+            maps: "Haritada Gör",
+            whatsapp: "WhatsApp ile Rezervasyon"
         },
         en: {
             open: "Open",
@@ -24,7 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
             searchPlaceholder: "Search products...",
             emptyMenu: "Menu will be updated soon...",
             rights: "All rights reserved.",
-            management: "Admin"
+            management: "Admin",
+            info: "Info",
+            businessInfo: "Business Info",
+            address: "Address",
+            phone: "Phone",
+            openingHours: "Opening Hours",
+            social: "Social Media",
+            maps: "View on Maps",
+            whatsapp: "Reservation via WhatsApp"
         }
     };
 
@@ -32,6 +48,137 @@ document.addEventListener('DOMContentLoaded', () => {
     const splashBtn = document.getElementById('splashBtn');
     const splashScreen = document.getElementById('splashScreen');
     const mainContent = document.getElementById('mainContent');
+
+    // Info Overlay yönetimi
+    const infoToggle = document.getElementById('infoToggle');
+    const infoOverlay = document.getElementById('infoOverlay');
+    const infoClose = document.getElementById('infoClose');
+
+    if (infoToggle) {
+        infoToggle.addEventListener('click', () => {
+            renderInfoContent(getMenuData());
+            infoOverlay.classList.add('active');
+        });
+    }
+
+    if (infoClose) {
+        infoClose.addEventListener('click', () => {
+            infoOverlay.classList.remove('active');
+        });
+    }
+
+    // Dışarı tıklayınca kapat
+    infoOverlay.addEventListener('click', (e) => {
+        if (e.target === infoOverlay) {
+            infoOverlay.classList.remove('active');
+        }
+    });
+
+    function renderInfoContent(data) {
+        const r = data.restaurant;
+        const body = document.getElementById('infoBody');
+        if (!body) return;
+
+        let html = '';
+
+        // Telefon
+        if (r.phone) {
+            html += `
+                <a href="tel:${r.phone.replace(/\D/g, '')}" class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-text">
+                        <small>${translations[currentLang].phone}</small>
+                        <div>${r.phone}</div>
+                    </div>
+                </a>
+            `;
+        }
+
+        // WhatsApp
+        if (r.whatsapp) {
+            html += `
+                <a href="https://wa.me/${r.whatsapp.replace(/\D/g, '')}" class="info-item info-whatsapp">
+                    <div class="info-icon">💬</div>
+                    <div class="info-text">
+                        <strong>${translations[currentLang].whatsapp}</strong>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Email
+        if (r.email) {
+            html += `
+                <a href="mailto:${r.email}" class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-text">
+                        <small>Email</small>
+                        <div>${r.email}</div>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Adres
+        if (r.address) {
+            html += `
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <small>${translations[currentLang].address}</small>
+                        <div>${r.address}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Harita
+        if (r.mapsLink) {
+            html += `
+                <a href="${r.mapsLink}" target="_blank" class="info-item">
+                    <div class="info-icon">🗺️</div>
+                    <div class="info-text">
+                        <strong>${translations[currentLang].maps}</strong>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Çalışma Saatleri
+        if (r.openingHours) {
+            html += `
+                <div class="info-item">
+                    <div class="info-icon">🕒</div>
+                    <div class="info-text">
+                        <small>${translations[currentLang].openingHours}</small>
+                        <div>${r.openingHours}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Sosyal Medya
+        if (r.instagram || r.facebook) {
+            html += `
+                <div class="info-item">
+                    <div class="info-icon">🌐</div>
+                    <div class="info-text">
+                        <small>${translations[currentLang].social}</small>
+                        <div style="display: flex; gap: 15px; margin-top: 5px;">
+                            ${r.instagram ? `<a href="https://instagram.com/${r.instagram}" target="_blank" style="color: var(--text-gold); text-decoration: none;">Instagram</a>` : ''}
+                            ${r.facebook ? `<a href="https://facebook.com/${r.facebook}" target="_blank" style="color: var(--text-gold); text-decoration: none;">Facebook</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        body.innerHTML = html;
+
+        // Modal başlığını çevir
+        const header = document.querySelector('.info-header h2');
+        if (header) header.textContent = translations[currentLang].businessInfo;
+    }
 
     // Restoran bilgilerini güncelle
     updateRestaurantInfo(data);

@@ -25,6 +25,12 @@
 
     <!-- ====== SPLASH SCREEN ====== -->
     <div class="splash-screen" id="splashScreen">
+        <!-- Info Toggle -->
+        <div class="info-toggle" id="infoToggle">
+            <span class="info-toggle-text" data-i18n="info">Bilgi</span>
+            <span class="info-toggle-icon">⌄</span>
+        </div>
+
         <div class="splash-logo"><img src="logo.png" alt="Kıskaç Logo" class="splash-logo-img"></div>
         <h1 class="splash-name" id="splashName">Kıskaç Cafe & Bar</h1>
         <p class="splash-slogan" id="splashSlogan">Denizin En Taze Hali</p>
@@ -36,6 +42,19 @@
             Menüyü Gör
             <span>→</span>
         </button>
+    </div>
+
+    <!-- ====== INFO OVERLAY ====== -->
+    <div class="info-overlay" id="infoOverlay">
+        <div class="info-content">
+            <div class="info-header">
+                <h2 data-i18n="businessInfo">İşletme Bilgileri</h2>
+                <button class="info-close" id="infoClose">×</button>
+            </div>
+            <div class="info-body" id="infoBody">
+                <!-- JS ile dolacak -->
+            </div>
+        </div>
     </div>
 
     <!-- ====== MAIN CONTENT ====== -->
