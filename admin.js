@@ -431,9 +431,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- GITHUB SYNC LOGIC ----
     async function pushToGitHub(menuData) {
-        const token = document.getElementById('githubToken').value.trim();
-        const username = document.getElementById('githubUsername').value.trim();
-        const repo = document.getElementById('githubRepo').value.trim();
+        // Token ve Ayarlar (Kullanıcının isteği üzerine koda gömüldü)
+        const token = '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';
+        const username = 'TolgaMst';
+        const repo = 'Kiskac';
         const path = 'data.json';
 
         if (!token || !username || !repo) {
@@ -515,20 +516,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('restFacebook').value = data.restaurant.facebook || '';
         document.getElementById('restMapsLink').value = data.restaurant.mapsLink || '';
         document.getElementById('restOpeningHours').value = data.restaurant.openingHours || '';
-        document.getElementById('restAddress').value = data.restaurant.address || '';
         document.getElementById('restInstagram').value = data.restaurant.instagram || '';
         document.getElementById('restIsOpen').checked = data.restaurant.isOpen !== false;
-
-        // GitHub settings (Load from localStorage only, not in data.json for security)
-        document.getElementById('githubToken').value = localStorage.getItem('kiskac_gh_token') || '';
-        document.getElementById('githubUsername').value = localStorage.getItem('kiskac_gh_user') || '';
-        document.getElementById('githubRepo').value = localStorage.getItem('kiskac_gh_repo') || '';
     }
-
-    // Save GitHub settings to local storage only
-    document.getElementById('githubToken')?.addEventListener('change', (e) => localStorage.setItem('kiskac_gh_token', e.target.value));
-    document.getElementById('githubUsername')?.addEventListener('change', (e) => localStorage.setItem('kiskac_gh_user', e.target.value));
-    document.getElementById('githubRepo')?.addEventListener('change', (e) => localStorage.setItem('kiskac_gh_repo', e.target.value));
 
     // ---- HELPERS ----
     function refreshAll() {
