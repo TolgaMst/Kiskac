@@ -10,9 +10,9 @@
         "email": "tlgmst@gmail.com",
         "instagram": "kiskaccafebar",
         "facebook": "",
-        "whatsapp": "905528317079",
-        "mapsLink": "https://maps.app.goo.gl/xxx",
-        "openingHours": "Pazartesi - Sazar: 12:00 - 01:00",
+        "whatsapp": "05333058733",
+        "mapsLink": "https://maps.app.goo.gl/t4UXmg3SuHdWng7m8",
+        "openingHours": "Pazartesi - Pazar: 12:00 - 01:00",
         "adminPassword": "kiskac2024"
     },
     "categories": [
@@ -1057,290 +1057,331 @@
             "order": 7
         },
         {
-            "id": "ia8", categoryId: "cat-8",
+            "id": "ia8",
+            "categoryId": "cat-8",
             "name": "Jack Daniels Duble",
             "description": "",
             "price": 0,
             "order": 8
         },
         {
-            "id": "ia9", categoryId: "cat-8",
+            "id": "ia9",
+            "categoryId": "cat-8",
             "name": "Chivas 35cl",
             "description": "Şişe",
             "price": 0,
             "order": 9
         },
         {
-            "id": "ia10", categoryId: "cat-8",
+            "id": "ia10",
+            "categoryId": "cat-8",
             "name": "Chivas 50cl",
             "description": "Şişe",
             "price": 0,
             "order": 10
         },
         {
-            "id": "ia11", categoryId: "cat-8",
+            "id": "ia11",
+            "categoryId": "cat-8",
             "name": "Chivas 70cl",
             "description": "Şişe",
             "price": 0,
             "order": 11
         },
         {
-            "id": "ia12", categoryId: "cat-8",
+            "id": "ia12",
+            "categoryId": "cat-8",
             "name": "Chivas 100cl",
             "description": "Şişe",
             "price": 0,
             "order": 12
         },
         {
-            "id": "k1", categoryId: "cat-9",
+            "id": "k1",
+            "categoryId": "cat-9",
             "name": "Mojito",
             "description": "",
             "price": 0,
             "order": 1
         },
         {
-            "id": "k2", categoryId: "cat-9",
+            "id": "k2",
+            "categoryId": "cat-9",
             "name": "Cuba Libre",
             "description": "",
             "price": 0,
             "order": 2
         },
         {
-            "id": "k3", categoryId: "cat-9",
+            "id": "k3",
+            "categoryId": "cat-9",
             "name": "Margarita",
             "description": "",
             "price": 0,
             "order": 3
         },
         {
-            "id": "k4", categoryId: "cat-9",
+            "id": "k4",
+            "categoryId": "cat-9",
             "name": "Gin Tonic",
             "description": "",
             "price": 0,
             "order": 4
         },
         {
-            "id": "k5", categoryId: "cat-9",
+            "id": "k5",
+            "categoryId": "cat-9",
             "name": "Gin Fizz",
             "description": "",
             "price": 0,
             "order": 5
         },
         {
-            "id": "k6", categoryId: "cat-9",
+            "id": "k6",
+            "categoryId": "cat-9",
             "name": "Long Island",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 6
         },
         {
-            "id": "sh1", categoryId: "cat-10",
+            "id": "sh1",
+            "categoryId": "cat-10",
             "name": "Olmeca Tekila",
             "description": "",
             "price": 0,
             "order": 1
         },
         {
-            "id": "sh2", categoryId: "cat-10",
+            "id": "sh2",
+            "categoryId": "cat-10",
             "name": "Olmeca Dark Chocolate",
             "description": "",
             "price": 0,
             "order": 2
         },
         {
-            "id": "sh3", categoryId: "cat-10",
+            "id": "sh3",
+            "categoryId": "cat-10",
             "name": "Jäger Cold Brew Coffee",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 3
         },
         {
-            "id": "sh4", categoryId: "cat-10",
+            "id": "sh4",
+            "categoryId": "cat-10",
             "name": "Jäger Orange",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 4
         },
         {
-            "id": "sh5", categoryId: "cat-10",
+            "id": "sh5",
+            "categoryId": "cat-10",
             "name": "Jägermeister",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 5
         },
         {
-            "id": "sh6", categoryId: "cat-10",
+            "id": "sh6",
+            "categoryId": "cat-10",
             "name": "Baileys",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 6
         },
         {
-            "id": "si1", categoryId: "cat-11",
+            "id": "si1",
+            "categoryId": "cat-11",
             "name": "Çay",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 1
         },
         {
-            "id": "si2", categoryId: "cat-11",
+            "id": "si2",
+            "categoryId": "cat-11",
             "name": "Fincan Çay",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 2
         },
         {
-            "id": "si3", categoryId: "cat-11",
+            "id": "si3",
+            "categoryId": "cat-11",
             "name": "Nescafe Sütlü",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 3
         },
         {
-            "id": "si4", categoryId: "cat-11",
+            "id": "si4",
+            "categoryId": "cat-11",
             "name": "Nescafe Sade",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 4
         },
         {
-            "id": "si5", categoryId: "cat-11",
+            "id": "si5",
+            "categoryId": "cat-11",
             "name": "Türk Kahvesi Sade",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 5
         },
         {
-            "id": "si6", categoryId: "cat-11",
+            "id": "si6",
+            "categoryId": "cat-11",
             "name": "Türk Kahvesi Orta",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 6
         },
         {
-            "id": "si7", categoryId: "cat-11",
+            "id": "si7",
+            "categoryId": "cat-11",
             "name": "Türk Kahvesi Şekerli",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 7
         },
         {
-            "id": "so1", categoryId: "cat-12",
+            "id": "so1",
+            "categoryId": "cat-12",
             "name": "Cola",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 1
         },
         {
-            "id": "so2", categoryId: "cat-12",
+            "id": "so2",
+            "categoryId": "cat-12",
             "name": "Fanta",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 2
         },
         {
-            "id": "so3", categoryId: "cat-12",
+            "id": "so3",
+            "categoryId": "cat-12",
             "name": "Sprite",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 3
         },
         {
-            "id": "so4", categoryId: "cat-12",
+            "id": "so4",
+            "categoryId": "cat-12",
             "name": "Fuse Tea Şeftali",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 4
         },
         {
-            "id": "so5", categoryId: "cat-12",
+            "id": "so5",
+            "categoryId": "cat-12",
             "name": "Fuse Tea Karpuz",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 5
         },
         {
-            "id": "so6", categoryId: "cat-12",
+            "id": "so6",
+            "categoryId": "cat-12",
             "name": "Fuse Tea Mango",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 6
         },
         {
-            "id": "so7", categoryId: "cat-12",
+            "id": "so7",
+            "categoryId": "cat-12",
             "name": "Redbull",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 7
         },
         {
-            "id": "so8", categoryId: "cat-12",
+            "id": "so8",
+            "categoryId": "cat-12",
             "name": "Redbull Şekersiz",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 8
         },
         {
-            "id": "so9", categoryId: "cat-12",
+            "id": "so9",
+            "categoryId": "cat-12",
             "name": "Soda",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 9
         },
         {
-            "id": "so10", categoryId: "cat-12",
+            "id": "so10",
+            "categoryId": "cat-12",
             "name": "Churchill",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 10
         },
         {
-            "id": "so11", categoryId: "cat-12",
+            "id": "so11",
+            "categoryId": "cat-12",
             "name": "Büyük Su",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 11
         },
         {
-            "id": "so12", categoryId: "cat-12",
+            "id": "so12",
+            "categoryId": "cat-12",
             "name": "Küçük Su",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 12
         },
         {
-            "id": "so13", categoryId: "cat-12",
+            "id": "so13",
+            "categoryId": "cat-12",
             "name": "Büyük Şalgam",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 13
         },
         {
-            "id": "so14", categoryId: "cat-12",
+            "id": "so14",
+            "categoryId": "cat-12",
             "name": "Küçük Şalgam",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 14
         },
         {
-            "id": "sr1", categoryId: "cat-13",
+            "id": "sr1",
+            "categoryId": "cat-13",
             "name": "Quattro Kırmızı",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 1
         },
         {
-            "id": "sr2", categoryId: "cat-13",
+            "id": "sr2",
+            "categoryId": "cat-13",
             "name": "Quattro Pembe",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 2
         },
         {
-            "id": "sr3", categoryId: "cat-13",
+            "id": "sr3",
+            "categoryId": "cat-13",
             "name": "Quattro Beyaz",
             "description": "",
-            "price: 0",
+            "price": 0,
             "order": 3
         }
     ]
