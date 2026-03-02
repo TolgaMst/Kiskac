@@ -516,6 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('restFacebook').value = data.restaurant.facebook || '';
         document.getElementById('restMapsLink').value = data.restaurant.mapsLink || '';
         document.getElementById('restOpeningHours').value = data.restaurant.openingHours || '';
+        document.getElementById('restAddress').value = data.restaurant.address || '';
         document.getElementById('restInstagram').value = data.restaurant.instagram || '';
         document.getElementById('restIsOpen').checked = data.restaurant.isOpen !== false;
     }
