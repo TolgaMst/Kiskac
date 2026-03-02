@@ -180,8 +180,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<span class="price-badge">₺${item.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>`
                 : `<span class="price-badge no-price">Belirtilmemiş</span>`;
 
+            const imageDisplay = item.image
+                ? `<div style="width:30px;height:30px;border-radius:4px;overflow:hidden;border:1px solid var(--admin-border)"><img src="${item.image}" style="width:100%;height:100%;object-fit:cover;"></div>`
+                : `<span style="opacity:0.3">🖼️ Yok</span>`;
+
             return `
                 <tr>
+                    <td>${imageDisplay}</td>
                     <td><strong>${item.name}</strong>${item.description ? `<br><small style="color:var(--admin-text-muted)">${item.description}</small>` : ''}</td>
                     <td><span class="category-badge">${catName}</span></td>
                     <td>${priceDisplay}</td>
@@ -215,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('itemName').value = '';
         document.getElementById('itemDescription').value = '';
         document.getElementById('itemPrice').value = '';
+        document.getElementById('itemImage').value = '';
         document.getElementById('itemOrder').value = '';
         openModal();
     });
@@ -238,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('itemName').value = item.name;
         document.getElementById('itemDescription').value = item.description || '';
         document.getElementById('itemPrice').value = item.price > 0 ? item.price : '';
+        document.getElementById('itemImage').value = item.image || '';
         document.getElementById('itemOrder').value = item.order;
         openModal();
     };
@@ -308,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const description = document.getElementById('itemDescription').value.trim();
             const price = parseFloat(document.getElementById('itemPrice').value.replace(',', '.')) || 0;
             const categoryId = document.getElementById('itemCategory').value;
+            const image = document.getElementById('itemImage').value.trim();
             const order = parseInt(document.getElementById('itemOrder').value) || 1;
 
             if (!name) {
@@ -321,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.name = name;
                     item.description = description;
                     item.price = price;
+                    item.image = image;
                     item.categoryId = categoryId;
                     item.order = order;
                 }
@@ -332,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: name,
                     description: description,
                     price: price,
+                    image: image,
                     order: order
                 });
                 showToast('Ürün eklendi', 'success');
@@ -464,6 +474,59 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.style.transition = '0.3s ease';
             setTimeout(() => toast.remove(), 300);
         }, 3000);
+    }
+
+    // ---- QR CODE GENERATOR ----
+    const generateQrBtn = document.getElementById('generateQrBtn');
+    const downloadQrBtn = document.getElementById('downloadQrBtn');
+    const menuUrlInput = document.getElementById('menuUrlInput');
+    const qrContainer = document.getElementById('qrCodeContent');
+    let qrcodeInstance = null;
+
+    if (generateQrBtn) {
+        generateQrBtn.addEventListener('click', () => {
+            const url = menuUrlInput.value.trim();
+            if (!url) {
+                showToast('Lütfen geçerli bir URL girin', 'error');
+                return;
+            }
+
+            qrContainer.innerHTML = '';
+            qrcodeInstance = new QRCode(qrContainer, {
+                text: url,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Make it look better (fix canvas size and display)
+            setTimeout(() => {
+                const qrImg = qrContainer.querySelector('img');
+                if (qrImg) {
+                    qrImg.style.width = '150px';
+                    qrImg.style.height = '150px';
+                }
+                downloadQrBtn.style.display = 'inline-flex';
+            }, 100);
+
+            showToast('QR Kod başarıyla oluşturuldu', 'success');
+        });
+    }
+
+    if (downloadQrBtn) {
+        downloadQrBtn.addEventListener('click', () => {
+            const qrCanvas = qrContainer.querySelector('canvas');
+            if (qrCanvas) {
+                const url = qrCanvas.toDataURL("image/png");
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'kiskac_menu_qr.png';
+                a.click();
+                showToast('QR Kod indiriliyor...', 'info');
+            }
+        });
     }
 
     // İlk yükleme

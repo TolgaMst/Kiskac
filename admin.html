@@ -88,6 +88,36 @@
 
                 <div class="panel-section">
                     <div class="panel-header">
+                        <span class="panel-title">📱 QR Kod Oluşturucu</span>
+                    </div>
+                    <div class="panel-body">
+                        <div style="display: flex; gap: 20px; align-items: start; flex-wrap: wrap;">
+                            <div id="qrContainer"
+                                style="background: white; padding: 10px; border-radius: 8px; display: inline-block;">
+                                <!-- QR Buraya Gelecek -->
+                                <div id="qrCodeContent"
+                                    style="width: 150px; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.8rem; text-align: center;">
+                                    Menü URL'sini kaydedin
+                                </div>
+                            </div>
+                            <div style="flex: 1; min-width: 250px;">
+                                <div class="form-group" style="margin-bottom: 12px;">
+                                    <label class="form-label">Menü URL (Canlı Link)</label>
+                                    <input type="text" class="form-input" id="menuUrlInput"
+                                        placeholder="https://tolgamusto.github.io/kiskac">
+                                </div>
+                                <button class="btn btn-primary" id="generateQrBtn">✨ QR Kod Oluştur</button>
+                                <button class="btn btn-ghost" id="downloadQrBtn" style="display:none">📥 İndir
+                                    (.png)</button>
+                                <p class="backup-info" style="margin-top: 10px;">Menünüzün canlı URL'sini girerek
+                                    masalar için QR kod oluşturabilirsiniz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="panel-header">
                         <span class="panel-title">💾 Veri Yedekleme</span>
                     </div>
                     <div class="panel-body">
@@ -153,6 +183,7 @@
                         <table class="admin-table">
                             <thead>
                                 <tr>
+                                    <th style="width: 50px;">Görsel</th>
                                     <th>Ürün Adı</th>
                                     <th>Kategori</th>
                                     <th>Fiyat</th>
@@ -268,6 +299,10 @@
                         <textarea class="form-textarea" id="itemDescription"
                             placeholder="Ürün açıklaması (isteğe bağlı)" rows="2"></textarea>
                     </div>
+                    <div class="form-group" style="margin-bottom:16px">
+                        <label class="form-label">Görsel URL (Opsiyonel)</label>
+                        <input type="text" class="form-input" id="itemImage" placeholder="https://resim.url/...">
+                    </div>
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label">Kategori *</label>
@@ -291,6 +326,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="data.js"></script>
     <script src="admin.js"></script>
 </body>

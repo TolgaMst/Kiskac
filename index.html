@@ -48,12 +48,27 @@
                     <div class="navbar-logo"><img src="logo.png" alt="Kıskaç" class="navbar-logo-img"></div>
                     <span class="navbar-title" id="navTitle">Kıskaç Cafe & Bar</span>
                 </div>
-                <div class="navbar-status">
-                    <span class="status-dot"></span>
-                    <span class="status-text">Açık</span>
+                <div class="navbar-right">
+                    <div class="lang-switcher" id="langSwitcher">
+                        <span class="lang-btn active" data-lang="tr">TR</span>
+                        <span class="lang-divider">|</span>
+                        <span class="lang-btn" data-lang="en">EN</span>
+                    </div>
+                    <div class="navbar-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text" data-i18n="open">Açık</span>
+                    </div>
                 </div>
             </div>
         </nav>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-inner">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="menuSearch" placeholder="Ürün ara..." autocomplete="off">
+            </div>
+        </div>
 
         <!-- Category Navigation -->
         <div class="category-nav">
@@ -74,6 +89,9 @@
             <p class="footer-text">Deniz ürünleriyle ünlü, eşsiz lezzetlerin adresi</p>
             <p class="footer-text" style="margin-top: 10px; opacity: 0.6;">© 2026 Kıskaç Cafe & Bar. Tüm hakları
                 saklıdır.</p>
+            <div class="footer-links" id="socialLinks">
+                <!-- JS ile dolacak -->
+            </div>
             <div class="footer-links">
                 <a href="admin.html" class="footer-link" style="opacity: 0.3; font-size: 0.7rem;">Yönetim</a>
             </div>
