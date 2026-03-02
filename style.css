@@ -674,28 +674,30 @@ body {
 
 /* ====== INFO SECTION ====== */
 .info-toggle {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-gold);
-    border-radius: 20px;
-    color: var(--text-gold);
-    font-size: 0.9rem;
-    cursor: pointer;
-    display: flex;
+    position: relative;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+    gap: 10px;
+    padding: 12px 40px;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bg-primary);
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
+    border: none;
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(212, 168, 83, 0.2);
+    margin: 16px auto 0;
     z-index: 10;
 }
 
 .info-toggle:hover {
-    background: rgba(197, 165, 114, 0.1);
-    box-shadow: 0 0 15px rgba(197, 165, 114, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(212, 168, 83, 0.4);
+    background: linear-gradient(135deg, var(--accent-gold-light), var(--accent-gold));
 }
 
 .info-toggle-icon {
