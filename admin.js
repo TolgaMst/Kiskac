@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = getMenuData();
         data.categories = data.categories.filter(c => c.id !== id);
         data.items = data.items.filter(i => i.categoryId !== id);
+        data.lastUpdated = Date.now();
         saveMenuData(data);
         refreshAll();
         showToast('Kategori silindi', 'success');
@@ -258,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = getMenuData();
         data.items = data.items.filter(i => i.id !== id);
+        data.lastUpdated = Date.now();
         saveMenuData(data);
         refreshAll();
         showToast('Ürün silindi', 'success');
@@ -353,6 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        data.lastUpdated = Date.now();
         saveMenuData(data);
         refreshAll();
         closeModal();
@@ -503,6 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data.restaurant.address = document.getElementById('restAddress').value.trim();
         data.restaurant.instagram = document.getElementById('restInstagram').value.trim();
         data.restaurant.isOpen = document.getElementById('restIsOpen').checked;
+        data.lastUpdated = Date.now();
         saveMenuData(data);
         showToast('Yerel değişiklikler kaydedildi', 'success');
 

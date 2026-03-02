@@ -227,24 +227,26 @@ async function initializeData(force = false) {
     const existing = localStorage.getItem('kiskac_menu_data');
     const existingData = existing ? JSON.parse(existing) : null;
 
-    // Eğer zorunluysa (admin girişi gibi) veya localStorage boşsa veya versiyon eskiyse data.json'dan çek
-    if (force || !existing || existingData.version < MENU_VERSION) {
-        try {
-            // Cache-busting için rastgele bir parametre ekliyoruz
-            const response = await fetch('data.json?v=' + Date.now());
-            if (!response.ok) throw new Error('Sunucudan veri alınamadı');
-            const data = await response.json();
-            localStorage.setItem('kiskac_menu_data', JSON.stringify(data));
-            return data;
-        } catch (err) {
-            console.error('Veri yükleme hatası:', err);
-            if (!existing) {
-                localStorage.setItem('kiskac_menu_data', JSON.stringify(DEFAULT_MENU_DATA));
-                return DEFAULT_MENU_DATA;
-            }
+    // Her zaman sunucudan güncel veriyi çekmeye çalış
+    // localStorage sadece çevrimdışı yedek olarak kullanılır
+    try {
+        // Cache-busting için rastgele bir parametre ekliyoruz
+        const response = await fetch('data.json?v=' + Date.now(), {
+            cache: 'no-store'
+        });
+        if (!response.ok) throw new Error('Sunucudan veri alınamadı');
+        const data = await response.json();
+        localStorage.setItem('kiskac_menu_data', JSON.stringify(data));
+        return data;
+    } catch (err) {
+        console.error('Veri yükleme hatası:', err);
+        // Sunucuya ulaşılamazsa localStorage'dan oku (çevrimdışı mod)
+        if (existing) {
+            return existingData;
         }
+        localStorage.setItem('kiskac_menu_data', JSON.stringify(DEFAULT_MENU_DATA));
+        return DEFAULT_MENU_DATA;
     }
-    return existingData;
 }
 
 function getMenuData() {
