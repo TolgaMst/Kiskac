@@ -100,17 +100,19 @@
             "id": "m1",
             "categoryId": "cat-1",
             "name": "Süzme",
-            "description": "",
-            "price": 0,
-            "order": 1
+            "description": "Kaymak gibi mübarek",
+            "price": 20,
+            "order": 1,
+            "image": ""
         },
         {
             "id": "m2",
             "categoryId": "cat-1",
             "name": "Deniz Börülcesi",
             "description": "",
-            "price": 0,
-            "order": 2
+            "price": 35,
+            "order": 2,
+            "image": ""
         },
         {
             "id": "m3",
