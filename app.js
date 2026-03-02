@@ -1,7 +1,7 @@
 // Kıskaç Cafe & Bar — Menü Sayfası JavaScript
 
-document.addEventListener('DOMContentLoaded', () => {
-    const data = getMenuData();
+document.addEventListener('DOMContentLoaded', async () => {
+    const data = await initializeData();
     let activeCategory = 'all';
     let currentLang = localStorage.getItem('kiskac_lang') || 'tr';
 

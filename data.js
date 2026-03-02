@@ -222,18 +222,26 @@ const DEFAULT_MENU_DATA = {
     ]
 };
 
-// localStorage'a ilk yükleme (versiyon kontrolü ile)
-function initializeData() {
+// Verileri data.json'dan veya localStorage'dan yükle
+async function initializeData() {
     const existing = localStorage.getItem('kiskac_menu_data');
-    if (!existing) {
-        localStorage.setItem('kiskac_menu_data', JSON.stringify(DEFAULT_MENU_DATA));
-    } else {
-        const parsed = JSON.parse(existing);
-        if (!parsed.version || parsed.version < MENU_VERSION) {
-            // Eski veri yapısı — yeni versiyon ile güncelle
-            localStorage.setItem('kiskac_menu_data', JSON.stringify(DEFAULT_MENU_DATA));
+
+    // Eğer localStorage boşsa veya versiyon eskiyse data.json'dan çek
+    if (!existing || JSON.parse(existing).version < MENU_VERSION) {
+        try {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            localStorage.setItem('kiskac_menu_data', JSON.stringify(data));
+            return data;
+        } catch (err) {
+            console.error('Veri yükleme hatası:', err);
+            if (!existing) {
+                localStorage.setItem('kiskac_menu_data', JSON.stringify(DEFAULT_MENU_DATA));
+                return DEFAULT_MENU_DATA;
+            }
         }
     }
+    return JSON.parse(existing);
 }
 
 function getMenuData() {

@@ -429,6 +429,60 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Şifre başarıyla değiştirildi', 'success');
     });
 
+    // ---- GITHUB SYNC LOGIC ----
+    async function pushToGitHub(menuData) {
+        const token = document.getElementById('githubToken').value.trim();
+        const username = document.getElementById('githubUsername').value.trim();
+        const repo = document.getElementById('githubRepo').value.trim();
+        const path = 'data.json';
+
+        if (!token || !username || !repo) {
+            showToast('GitHub ayarları eksik. Sadece yerel kaydedildi.', 'info');
+            return;
+        }
+
+        showToast('GitHub\'a gönderiliyor...', 'info');
+
+        try {
+            // 1. Get current file SHA
+            const getUrl = `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
+            const res = await fetch(getUrl, {
+                headers: { 'Authorization': `token ${token}` }
+            });
+
+            let sha = '';
+            if (res.ok) {
+                const fileData = await res.json();
+                sha = fileData.sha;
+            }
+
+            // 2. Push update
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(menuData, null, 4))));
+            const putRes = await fetch(getUrl, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: `Menu update: ${new Date().toLocaleString()}`,
+                    content: content,
+                    sha: sha
+                })
+            });
+
+            if (putRes.ok) {
+                showToast('GitHub başarıyla güncellendi! 🚀', 'success');
+            } else {
+                const err = await putRes.json();
+                throw new Error(err.message || 'GitHub hatası');
+            }
+        } catch (err) {
+            console.error('GitHub Push Error:', err);
+            showToast('GitHub hatası: ' + err.message, 'error');
+        }
+    }
+
     // ---- RESTAURANT SETTINGS ----
     document.getElementById('saveRestaurantBtn').addEventListener('click', () => {
         const data = getMenuData();
@@ -444,7 +498,10 @@ document.addEventListener('DOMContentLoaded', () => {
         data.restaurant.instagram = document.getElementById('restInstagram').value.trim();
         data.restaurant.isOpen = document.getElementById('restIsOpen').checked;
         saveMenuData(data);
-        showToast('Restoran bilgileri güncellendi', 'success');
+        showToast('Yerel değişiklikler kaydedildi', 'success');
+
+        // GitHub'a gönder (Ayarlar varsa)
+        pushToGitHub(data);
     });
 
     // Load restaurant settings
@@ -461,7 +518,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('restAddress').value = data.restaurant.address || '';
         document.getElementById('restInstagram').value = data.restaurant.instagram || '';
         document.getElementById('restIsOpen').checked = data.restaurant.isOpen !== false;
+
+        // GitHub settings (Load from localStorage only, not in data.json for security)
+        document.getElementById('githubToken').value = localStorage.getItem('kiskac_gh_token') || '';
+        document.getElementById('githubUsername').value = localStorage.getItem('kiskac_gh_user') || '';
+        document.getElementById('githubRepo').value = localStorage.getItem('kiskac_gh_repo') || '';
     }
+
+    // Save GitHub settings to local storage only
+    document.getElementById('githubToken')?.addEventListener('change', (e) => localStorage.setItem('kiskac_gh_token', e.target.value));
+    document.getElementById('githubUsername')?.addEventListener('change', (e) => localStorage.setItem('kiskac_gh_user', e.target.value));
+    document.getElementById('githubRepo')?.addEventListener('change', (e) => localStorage.setItem('kiskac_gh_repo', e.target.value));
 
     // ---- HELPERS ----
     function refreshAll() {
