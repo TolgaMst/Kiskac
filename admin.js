@@ -29,13 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function showAdmin() {
+    async function showAdmin() {
         isLoggedIn = true;
         loginScreen.style.display = 'none';
         adminLayout.classList.add('visible');
-        refreshDashboard();
-        refreshCategories();
-        refreshItems();
+
+        // Önce GitHub'daki (sunucudaki) en güncel veriyi çek
+        showToast('En güncel veriler yükleniyor...', 'info');
+        await initializeData(true);
+
+        refreshAll();
     }
 
     // ---- LOGOUT ----

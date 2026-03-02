@@ -223,13 +223,16 @@ const DEFAULT_MENU_DATA = {
 };
 
 // Verileri data.json'dan veya localStorage'dan yükle
-async function initializeData() {
+async function initializeData(force = false) {
     const existing = localStorage.getItem('kiskac_menu_data');
+    const existingData = existing ? JSON.parse(existing) : null;
 
-    // Eğer localStorage boşsa veya versiyon eskiyse data.json'dan çek
-    if (!existing || JSON.parse(existing).version < MENU_VERSION) {
+    // Eğer zorunluysa (admin girişi gibi) veya localStorage boşsa veya versiyon eskiyse data.json'dan çek
+    if (force || !existing || existingData.version < MENU_VERSION) {
         try {
-            const response = await fetch('data.json');
+            // Cache-busting için rastgele bir parametre ekliyoruz
+            const response = await fetch('data.json?v=' + Date.now());
+            if (!response.ok) throw new Error('Sunucudan veri alınamadı');
             const data = await response.json();
             localStorage.setItem('kiskac_menu_data', JSON.stringify(data));
             return data;
@@ -241,7 +244,7 @@ async function initializeData() {
             }
         }
     }
-    return JSON.parse(existing);
+    return existingData;
 }
 
 function getMenuData() {
