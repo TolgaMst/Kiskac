@@ -172,6 +172,7 @@
                     <div class="panel-header">
                         <span class="panel-title">🍽️ Ürünler</span>
                         <div style="display:flex; gap:10px; align-items:center;">
+                            <button class="btn btn-ghost btn-sm" id="bulkPriceBtn">💰 Toplu Fiyat</button>
                             <select class="form-select" id="itemCategoryFilter"
                                 style="padding:6px 10px; font-size:0.8rem;">
                                 <option value="all">Tüm Kategoriler</option>
@@ -194,6 +195,42 @@
                             <tbody id="itemsTableBody">
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bulk Price Section -->
+            <div class="panel-section" id="bulkPriceSection" style="display:none; margin-top:16px;">
+                <div class="panel-header">
+                    <span class="panel-title">💰 Toplu Fiyat Güncelleme</span>
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <select class="form-select" id="bulkCategoryFilter" style="padding:6px 10px; font-size:0.8rem;">
+                            <option value="all">Tüm Kategoriler</option>
+                        </select>
+                        <button class="btn btn-ghost btn-sm" id="bulkPriceCloseBtn">&times; Kapat</button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="bulk-price-actions" style="margin-bottom:16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                        <label style="font-size:0.8rem; color:var(--admin-text-secondary);">Yüzdelik Değişim:</label>
+                        <input type="number" class="form-input" id="bulkPercentage" placeholder="10" style="width:80px; padding:6px 10px;">
+                        <button class="btn btn-ghost btn-sm" id="bulkIncreaseBtn">&#9650; Artır (%)</button>
+                        <button class="btn btn-ghost btn-sm" id="bulkDecreaseBtn">&#9660; Azalt (%)</button>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table class="admin-table" id="bulkPriceTable">
+                            <thead>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <th style="width:120px;">Fiyat (₺)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bulkPriceBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-actions" style="margin-top:16px;">
+                        <button class="btn btn-primary" id="bulkPriceSaveBtn">💾 Tümünü Kaydet</button>
                     </div>
                 </div>
             </div>
@@ -328,6 +365,10 @@
                         <input type="text" class="form-input" id="catName" placeholder="Örn: Deniz Ürünleri">
                     </div>
                     <div class="form-group" style="margin-bottom:16px">
+                        <label class="form-label">English Name (Optional)</label>
+                        <input type="text" class="form-input" id="catNameEn" placeholder="e.g. Seafood">
+                    </div>
+                    <div class="form-group" style="margin-bottom:16px">
                         <label class="form-label">İkon (Emoji)</label>
                         <input type="text" class="form-input" id="catIcon" placeholder="🐟" maxlength="4">
                     </div>
@@ -348,10 +389,45 @@
                         <textarea class="form-textarea" id="itemDescription"
                             placeholder="Ürün açıklaması (isteğe bağlı)" rows="2"></textarea>
                     </div>
-                    <div class="form-group" style="margin-bottom:16px">
-                        <label class="form-label">Görsel URL (Opsiyonel)</label>
-                        <input type="text" class="form-input" id="itemImage" placeholder="https://resim.url/...">
+
+                    <!-- English Fields -->
+                    <div class="en-fields-section" style="margin-bottom:16px">
+                        <div class="en-fields-toggle" id="itemEnToggle">
+                            English Fields (Optional) &#9662;
+                        </div>
+                        <div class="en-fields collapsed" id="itemEnFields">
+                            <div class="form-group" style="margin-bottom:12px; margin-top:12px;">
+                                <label class="form-label">English Name</label>
+                                <input type="text" class="form-input" id="itemNameEn" placeholder="e.g. Shrimp Casserole">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">English Description</label>
+                                <textarea class="form-textarea" id="itemDescriptionEn" placeholder="English description (optional)" rows="2"></textarea>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Image Upload -->
+                    <div class="form-group" style="margin-bottom:16px">
+                        <label class="form-label">Görsel</label>
+                        <div class="image-upload-zone" id="imageDropZone">
+                            <div class="image-upload-preview" id="imagePreview" style="display:none;">
+                                <img id="imagePreviewImg" src="" alt="Preview">
+                                <button type="button" class="image-remove-btn" id="imageRemoveBtn">&times;</button>
+                            </div>
+                            <div class="image-upload-placeholder" id="imageUploadPlaceholder">
+                                <div class="image-upload-icon">📷</div>
+                                <div class="image-upload-text">Görsel sürükleyin veya tıklayın</div>
+                                <div class="image-upload-hint">Max 400x400, JPEG olarak sıkıştırılır</div>
+                            </div>
+                            <input type="file" id="imageFileInput" accept="image/*" style="display:none;">
+                        </div>
+                        <div style="margin-top:8px;">
+                            <label class="form-label" style="font-size:0.75rem; color:var(--admin-text-muted);">veya URL girin:</label>
+                            <input type="text" class="form-input" id="itemImage" placeholder="https://resim.url/...">
+                        </div>
+                    </div>
+
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label">Kategori *</label>
@@ -378,6 +454,11 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="data.js"></script>
     <script src="admin.js"></script>
+    <script>
+        document.getElementById('itemEnToggle')?.addEventListener('click', function() {
+            document.getElementById('itemEnFields').classList.toggle('collapsed');
+        });
+    </script>
 </body>
 
 </html>

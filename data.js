@@ -15,22 +15,22 @@ const DEFAULT_MENU_DATA = {
         whatsapp: "905528317079",
         mapsLink: "https://maps.app.goo.gl/xxx",
         openingHours: "Pazartesi - Pazar: 12:00 - 01:00",
-        adminPassword: "kiskac2024"
+        adminPassword: "02e6405f18b14e73e9968bd31f5fba0ffacf8ee63c7c53b28a8b0aa9d31c3e41"
     },
     categories: [
-        { id: "cat-1", name: "Mezeler", icon: "🦐", order: 1 },
-        { id: "cat-2", name: "Sıcaklar", icon: "🔥", order: 2 },
-        { id: "cat-3", name: "Balıklar", icon: "🐟", order: 3 },
-        { id: "cat-4", name: "Salatalar", icon: "🥗", order: 4 },
-        { id: "cat-5", name: "Rakılar", icon: "🥃", order: 5 },
-        { id: "cat-6", name: "Biralar", icon: "🍺", order: 6 },
-        { id: "cat-7", name: "Çerezler", icon: "🥜", order: 7 },
-        { id: "cat-8", name: "İmport Alkol", icon: "🥃", order: 8 },
-        { id: "cat-9", name: "Kokteyller", icon: "🍸", order: 9 },
-        { id: "cat-10", name: "Shotlar", icon: "🥂", order: 10 },
-        { id: "cat-11", name: "Sıcak İçecekler", icon: "☕", order: 11 },
-        { id: "cat-12", name: "Soğuk İçecekler", icon: "🥤", order: 12 },
-        { id: "cat-13", name: "Şaraplar", icon: "🍷", order: 13 }
+        { id: "cat-1", name: "Mezeler", name_en: "Appetizers", icon: "🦐", order: 1 },
+        { id: "cat-2", name: "Sıcaklar", name_en: "Hot Dishes", icon: "🔥", order: 2 },
+        { id: "cat-3", name: "Balıklar", name_en: "Fish", icon: "🐟", order: 3 },
+        { id: "cat-4", name: "Salatalar", name_en: "Salads", icon: "🥗", order: 4 },
+        { id: "cat-5", name: "Rakılar", name_en: "Raki", icon: "🥃", order: 5 },
+        { id: "cat-6", name: "Biralar", name_en: "Beers", icon: "🍺", order: 6 },
+        { id: "cat-7", name: "Çerezler", name_en: "Snacks", icon: "🥜", order: 7 },
+        { id: "cat-8", name: "İmport Alkol", name_en: "Imported Spirits", icon: "🥃", order: 8 },
+        { id: "cat-9", name: "Kokteyller", name_en: "Cocktails", icon: "🍸", order: 9 },
+        { id: "cat-10", name: "Shotlar", name_en: "Shots", icon: "🥂", order: 10 },
+        { id: "cat-11", name: "Sıcak İçecekler", name_en: "Hot Beverages", icon: "☕", order: 11 },
+        { id: "cat-12", name: "Soğuk İçecekler", name_en: "Cold Beverages", icon: "🥤", order: 12 },
+        { id: "cat-13", name: "Şaraplar", name_en: "Wines", icon: "🍷", order: 13 }
     ],
     items: [
         // ─── MEZELER ───
@@ -222,6 +222,15 @@ const DEFAULT_MENU_DATA = {
     ]
 };
 
+// SHA-256 şifre hashleme (Web Crypto API)
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 // Verileri data.json'dan veya localStorage'dan yükle
 async function initializeData(force = false) {
     const existing = localStorage.getItem('kiskac_menu_data');
@@ -236,6 +245,10 @@ async function initializeData(force = false) {
         });
         if (!response.ok) throw new Error('Sunucudan veri alınamadı');
         const data = await response.json();
+        // Düz metin şifre tespit edilirse hashle (migration)
+        if (data.restaurant && data.restaurant.adminPassword && data.restaurant.adminPassword.length !== 64) {
+            data.restaurant.adminPassword = await hashPassword(data.restaurant.adminPassword);
+        }
         localStorage.setItem('kiskac_menu_data', JSON.stringify(data));
         return data;
     } catch (err) {

@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             openingHours: "Çalışma Saatleri",
             social: "Sosyal Medya",
             maps: "Haritada Gör",
-            whatsapp: "WhatsApp ile Rezervasyon"
+            whatsapp: "WhatsApp ile Rezervasyon",
+            askForPrice: "Fiyat Sorunuz"
         },
         en: {
             open: "Open",
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             openingHours: "Opening Hours",
             social: "Social Media",
             maps: "View on Maps",
-            whatsapp: "Reservation via WhatsApp"
+            whatsapp: "Reservation via WhatsApp",
+            askForPrice: "Ask for Price"
         }
     };
 
@@ -190,9 +192,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             setTimeout(() => {
                 splashScreen.style.display = 'none';
                 mainContent.classList.add('visible');
-                renderCategories(data);
-                renderMenu(data);
-                createBubbles();
+                // Skeleton kısa süre görünür, sonra gerçek içerikle değişir
+                setTimeout(() => {
+                    renderCategories(data);
+                    renderMenu(data);
+                    createBubbles();
+                }, 300);
             }, 400);
         });
     }
@@ -351,7 +356,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             html += `
                 <div class="category-item" data-category="${cat.id}" onclick="filterCategory('${cat.id}', this)">
                     <div class="category-icon">${cat.icon}</div>
-                    <span class="category-label">${cat.name}</span>
+                    <span class="category-label">${(currentLang === 'en' && cat.name_en) ? cat.name_en : cat.name}</span>
                 </div>
             `;
         });
@@ -373,19 +378,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (searchQuery) {
                 items = items.filter(item =>
                     item.name.toLowerCase().includes(searchQuery) ||
-                    (item.description && item.description.toLowerCase().includes(searchQuery))
+                    (item.name_en && item.name_en.toLowerCase().includes(searchQuery)) ||
+                    (item.description && item.description.toLowerCase().includes(searchQuery)) ||
+                    (item.description_en && item.description_en.toLowerCase().includes(searchQuery))
                 );
             }
 
             if (items.length === 0) return;
             if (filterCatId && filterCatId !== 'all' && filterCatId !== cat.id && !searchQuery) return;
 
+            const catDisplayName = (currentLang === 'en' && cat.name_en) ? cat.name_en : cat.name;
+
             html += `
                 <div class="menu-section" id="section-${cat.id}">
                     <div class="section-header">
                         <div class="section-icon">${cat.icon}</div>
                         <h2 class="section-title">
-                            <span class="section-star">✦ </span>${cat.name}<span class="section-star"> ✦</span>
+                            <span class="section-star">✦ </span>${catDisplayName}<span class="section-star"> ✦</span>
                         </h2>
                     </div>
                     <div class="menu-items">
@@ -394,18 +403,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             items.forEach(item => {
                 const priceDisplay = item.price > 0
                     ? `<span class="item-price">₺${item.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>`
-                    : `<span class="item-price no-price">—</span>`;
+                    : `<span class="item-price no-price">${translations[currentLang].askForPrice}</span>`;
+
+                const itemDisplayName = (currentLang === 'en' && item.name_en) ? item.name_en : item.name;
+                const itemDisplayDesc = (currentLang === 'en' && item.description_en) ? item.description_en : item.description;
 
                 const imageHtml = item.image
-                    ? `<div class="item-image"><img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/100x100?text=Kıskaç'"></div>`
+                    ? `<div class="item-image"><img src="${item.image}" alt="${itemDisplayName}" onerror="this.src='https://placehold.co/100x100?text=Kıskaç'"></div>`
                     : `<div class="item-image placeholder">🦐</div>`;
 
                 html += `
                     <div class="menu-item-card ${item.image ? 'has-image' : ''}">
                         ${imageHtml}
                         <div class="item-info">
-                            <div class="item-name">${item.name}</div>
-                            ${item.description ? `<div class="item-description">${item.description}</div>` : ''}
+                            <div class="item-name">${itemDisplayName}</div>
+                            ${itemDisplayDesc ? `<div class="item-description">${itemDisplayDesc}</div>` : ''}
                         </div>
                         ${priceDisplay}
                     </div>

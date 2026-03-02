@@ -13,84 +13,97 @@
         "whatsapp": "+90 533 305 87 33",
         "mapsLink": "https://maps.app.goo.gl/t4UXmg3SuHdWng7m8",
         "openingHours": "Pazartesi - Pazar: 10:00 - 01:00",
-        "adminPassword": "kiskac2024"
+        "adminPassword": "02e6405f18b14e73e9968bd31f5fba0ffacf8ee63c7c53b28a8b0aa9d31c3e41"
     },
     "categories": [
         {
             "id": "cat-1",
             "name": "Mezeler",
+            "name_en": "",
             "icon": "🦐",
             "order": 1
         },
         {
             "id": "cat-2",
             "name": "Sıcaklar",
+            "name_en": "",
             "icon": "🔥",
             "order": 2
         },
         {
             "id": "cat-3",
             "name": "Balıklar",
+            "name_en": "",
             "icon": "🐟",
             "order": 3
         },
         {
             "id": "cat-4",
             "name": "Salatalar",
+            "name_en": "",
             "icon": "🥗",
             "order": 4
         },
         {
             "id": "cat-5",
             "name": "Rakılar",
+            "name_en": "",
             "icon": "🥃",
             "order": 5
         },
         {
             "id": "cat-6",
             "name": "Biralar",
+            "name_en": "",
             "icon": "🍺",
             "order": 6
         },
         {
             "id": "cat-7",
             "name": "Çerezler",
+            "name_en": "",
             "icon": "🥜",
             "order": 7
         },
         {
             "id": "cat-8",
             "name": "İmport Alkol",
+            "name_en": "",
             "icon": "🥃",
             "order": 8
         },
         {
             "id": "cat-9",
             "name": "Kokteyller",
+            "name_en": "",
             "icon": "🍸",
             "order": 9
         },
         {
             "id": "cat-10",
             "name": "Shotlar",
+            "name_en": "",
             "icon": "🥂",
             "order": 10
         },
         {
             "id": "cat-11",
             "name": "Sıcak İçecekler",
+            "name_en": "",
             "icon": "☕",
             "order": 11
         },
         {
             "id": "cat-12",
             "name": "Soğuk İçecekler",
+            "name_en": "",
             "icon": "🥤",
             "order": 12
         },
         {
             "id": "cat-13",
             "name": "Şaraplar",
+            "name_en": "",
             "icon": "🍷",
             "order": 13
         }
@@ -100,7 +113,9 @@
             "id": "m1",
             "categoryId": "cat-1",
             "name": "Süzme",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -108,7 +123,9 @@
             "id": "m2",
             "categoryId": "cat-1",
             "name": "Deniz Börülcesi",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -116,7 +133,9 @@
             "id": "m3",
             "categoryId": "cat-1",
             "name": "Kaya Koruğu",
+            "name_en": "",
             "description": "korruuukkk",
+            "description_en": "",
             "price": 1789,
             "order": 3,
             "image": ""
@@ -125,7 +144,9 @@
             "id": "m4",
             "categoryId": "cat-1",
             "name": "Köz Patlıcan",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -133,7 +154,9 @@
             "id": "m5",
             "categoryId": "cat-1",
             "name": "Ezine",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -141,7 +164,9 @@
             "id": "m6",
             "categoryId": "cat-1",
             "name": "Kuru Domatesli",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -149,7 +174,9 @@
             "id": "m7",
             "categoryId": "cat-1",
             "name": "Haydari",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -157,7 +184,9 @@
             "id": "m8",
             "categoryId": "cat-1",
             "name": "Izgara Zeytin",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 8
         },
@@ -165,7 +194,9 @@
             "id": "m9",
             "categoryId": "cat-1",
             "name": "Midye Söğüş",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 9
         },
@@ -173,7 +204,9 @@
             "id": "m10",
             "categoryId": "cat-1",
             "name": "Yeşil Zeytin",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 10
         },
@@ -181,7 +214,9 @@
             "id": "m11",
             "categoryId": "cat-1",
             "name": "Humus",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 11
         },
@@ -189,7 +224,9 @@
             "id": "m12",
             "categoryId": "cat-1",
             "name": "Atom",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 12
         },
@@ -197,7 +234,9 @@
             "id": "m13",
             "categoryId": "cat-1",
             "name": "Mütebbel",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 13
         },
@@ -205,7 +244,9 @@
             "id": "m14",
             "categoryId": "cat-1",
             "name": "Fava",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 14
         },
@@ -213,7 +254,9 @@
             "id": "m15",
             "categoryId": "cat-1",
             "name": "Lakerda",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 15
         },
@@ -221,7 +264,9 @@
             "id": "m16",
             "categoryId": "cat-1",
             "name": "Kereviz",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 16
         },
@@ -229,7 +274,9 @@
             "id": "m17",
             "categoryId": "cat-1",
             "name": "Pancar",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 17
         },
@@ -237,7 +284,9 @@
             "id": "m18",
             "categoryId": "cat-1",
             "name": "Levrek Marin",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 18
         },
@@ -245,7 +294,9 @@
             "id": "m19",
             "categoryId": "cat-1",
             "name": "Girit Ezmesi",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 19
         },
@@ -253,7 +304,9 @@
             "id": "m20",
             "categoryId": "cat-1",
             "name": "Havuç Tarator",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 20
         },
@@ -261,7 +314,9 @@
             "id": "m21",
             "categoryId": "cat-1",
             "name": "Tahin Tarator",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 21
         },
@@ -269,7 +324,9 @@
             "id": "m22",
             "categoryId": "cat-1",
             "name": "Fesleğenli Mezgit",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 22
         },
@@ -277,7 +334,9 @@
             "id": "m23",
             "categoryId": "cat-1",
             "name": "Sübye Marin",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 23
         },
@@ -285,7 +344,9 @@
             "id": "m24",
             "categoryId": "cat-1",
             "name": "Somon Füme",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 24
         },
@@ -293,7 +354,9 @@
             "id": "m25",
             "categoryId": "cat-1",
             "name": "Şakşuka",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 25
         },
@@ -301,7 +364,9 @@
             "id": "m26",
             "categoryId": "cat-1",
             "name": "Cacık",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 26
         },
@@ -309,7 +374,9 @@
             "id": "m27",
             "categoryId": "cat-1",
             "name": "Rus Salatası",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 27
         },
@@ -317,7 +384,9 @@
             "id": "m28",
             "categoryId": "cat-1",
             "name": "Yoğurtlu Patlıcan",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 28
         },
@@ -325,7 +394,9 @@
             "id": "m29",
             "categoryId": "cat-1",
             "name": "İzmir Ezmesi",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 29
         },
@@ -333,7 +404,9 @@
             "id": "m30",
             "categoryId": "cat-1",
             "name": "Ispanak",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 30
         },
@@ -341,7 +414,9 @@
             "id": "m31",
             "categoryId": "cat-1",
             "name": "Deniz Special",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 31
         },
@@ -349,7 +424,9 @@
             "id": "m32",
             "categoryId": "cat-1",
             "name": "Et Füme",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 32
         },
@@ -357,7 +434,9 @@
             "id": "m33",
             "categoryId": "cat-1",
             "name": "Arnavut Ciğeri",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 33
         },
@@ -365,7 +444,9 @@
             "id": "m34",
             "categoryId": "cat-1",
             "name": "Brokoli",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 34
         },
@@ -373,7 +454,9 @@
             "id": "s1",
             "categoryId": "cat-2",
             "name": "Yengeç",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -381,7 +464,9 @@
             "id": "s2",
             "categoryId": "cat-2",
             "name": "Yengeç Dolma",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -389,7 +474,9 @@
             "id": "s3",
             "categoryId": "cat-2",
             "name": "Karides",
+            "name_en": "",
             "description": "Buharda pişmiş",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -397,7 +484,9 @@
             "id": "s4",
             "categoryId": "cat-2",
             "name": "Karides Güveç",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -405,7 +494,9 @@
             "id": "s5",
             "categoryId": "cat-2",
             "name": "Otlu Karides Güveç",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -413,7 +504,9 @@
             "id": "s6",
             "categoryId": "cat-2",
             "name": "Ahtapot",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -421,7 +514,9 @@
             "id": "s7",
             "categoryId": "cat-2",
             "name": "Kalamar",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -429,7 +524,9 @@
             "id": "s8",
             "categoryId": "cat-2",
             "name": "Midye Tava",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 8
         },
@@ -437,7 +534,9 @@
             "id": "s9",
             "categoryId": "cat-2",
             "name": "Midye Dolma",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 9
         },
@@ -445,7 +544,9 @@
             "id": "s10",
             "categoryId": "cat-2",
             "name": "Bira Tabağı",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 10
         },
@@ -453,7 +554,9 @@
             "id": "s11",
             "categoryId": "cat-2",
             "name": "Çıtır Tavuk",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 11
         },
@@ -461,7 +564,9 @@
             "id": "s12",
             "categoryId": "cat-2",
             "name": "Sigara Böreği",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 12
         },
@@ -469,7 +574,9 @@
             "id": "s13",
             "categoryId": "cat-2",
             "name": "Parmak Cips",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 13
         },
@@ -477,7 +584,9 @@
             "id": "s14",
             "categoryId": "cat-2",
             "name": "Elma Cips",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 14
         },
@@ -485,7 +594,9 @@
             "id": "s15",
             "categoryId": "cat-2",
             "name": "Köylü Patates",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 15
         },
@@ -493,7 +604,9 @@
             "id": "s16",
             "categoryId": "cat-2",
             "name": "Nohut",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 16
         },
@@ -501,7 +614,9 @@
             "id": "s17",
             "categoryId": "cat-2",
             "name": "Haşlanmış Fıstık",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 17
         },
@@ -509,7 +624,9 @@
             "id": "s18",
             "categoryId": "cat-2",
             "name": "Karides Cips",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 18
         },
@@ -517,7 +634,9 @@
             "id": "s19",
             "categoryId": "cat-2",
             "name": "Güveçte Mantar",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 19
         },
@@ -525,7 +644,9 @@
             "id": "s20",
             "categoryId": "cat-2",
             "name": "Fette",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 20
         },
@@ -533,7 +654,9 @@
             "id": "s21",
             "categoryId": "cat-2",
             "name": "Somon Burger",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 21
         },
@@ -541,7 +664,9 @@
             "id": "s22",
             "categoryId": "cat-2",
             "name": "Kokteyl Şiş",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 22
         },
@@ -549,7 +674,9 @@
             "id": "s23",
             "categoryId": "cat-2",
             "name": "Karidesli Çıtır Ekmek",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 23
         },
@@ -557,7 +684,9 @@
             "id": "s24",
             "categoryId": "cat-2",
             "name": "Sea Food Boil",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 24
         },
@@ -565,7 +694,9 @@
             "id": "s25",
             "categoryId": "cat-2",
             "name": "Burrito",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 25
         },
@@ -573,7 +704,9 @@
             "id": "s26",
             "categoryId": "cat-2",
             "name": "Saç Kavurma",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 26
         },
@@ -581,7 +714,9 @@
             "id": "s27",
             "categoryId": "cat-2",
             "name": "Biber Dolma",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 27
         },
@@ -589,7 +724,9 @@
             "id": "s28",
             "categoryId": "cat-2",
             "name": "Avokado Dolma",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 28
         },
@@ -597,7 +734,9 @@
             "id": "s29",
             "categoryId": "cat-2",
             "name": "Peynir Tabağı",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 29
         },
@@ -605,7 +744,9 @@
             "id": "b1",
             "categoryId": "cat-3",
             "name": "Levrek",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -613,7 +754,9 @@
             "id": "b2",
             "categoryId": "cat-3",
             "name": "Çipura",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -621,7 +764,9 @@
             "id": "b3",
             "categoryId": "cat-3",
             "name": "Barbun",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -629,7 +774,9 @@
             "id": "b4",
             "categoryId": "cat-3",
             "name": "Hamsi",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -637,7 +784,9 @@
             "id": "sl1",
             "categoryId": "cat-4",
             "name": "Roka Salatası",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -645,7 +794,9 @@
             "id": "sl2",
             "categoryId": "cat-4",
             "name": "Mevsim Salatası",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -653,7 +804,9 @@
             "id": "sl3",
             "categoryId": "cat-4",
             "name": "Çoban Salatası",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -661,7 +814,9 @@
             "id": "sl4",
             "categoryId": "cat-4",
             "name": "Gavurdağı Salatası",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -669,7 +824,9 @@
             "id": "sl5",
             "categoryId": "cat-4",
             "name": "Zeytin Salatası",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -677,7 +834,9 @@
             "id": "sl6",
             "categoryId": "cat-4",
             "name": "Yeşil Salata",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -685,7 +844,9 @@
             "id": "sl7",
             "categoryId": "cat-4",
             "name": "Kaşık Salata",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -693,7 +854,9 @@
             "id": "r1",
             "categoryId": "cat-5",
             "name": "Tekirdağ Altınseri 35cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -701,7 +864,9 @@
             "id": "r2",
             "categoryId": "cat-5",
             "name": "Tekirdağ Altınseri 50cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -709,7 +874,9 @@
             "id": "r3",
             "categoryId": "cat-5",
             "name": "Tekirdağ Altınseri 70cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -717,7 +884,9 @@
             "id": "r4",
             "categoryId": "cat-5",
             "name": "Tekirdağ Altınseri 100cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -725,7 +894,9 @@
             "id": "r5",
             "categoryId": "cat-5",
             "name": "Efe Gold 35cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -733,7 +904,9 @@
             "id": "r6",
             "categoryId": "cat-5",
             "name": "Efe Gold 50cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -741,7 +914,9 @@
             "id": "r7",
             "categoryId": "cat-5",
             "name": "Efe Gold 70cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -749,7 +924,9 @@
             "id": "r8",
             "categoryId": "cat-5",
             "name": "Efe Gold 100cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 8
         },
@@ -757,7 +934,9 @@
             "id": "r9",
             "categoryId": "cat-5",
             "name": "Yeni Rakı 35cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 9
         },
@@ -765,7 +944,9 @@
             "id": "r10",
             "categoryId": "cat-5",
             "name": "Yeni Rakı 50cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 10
         },
@@ -773,7 +954,9 @@
             "id": "r11",
             "categoryId": "cat-5",
             "name": "Yeni Rakı 70cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 11
         },
@@ -781,7 +964,9 @@
             "id": "r12",
             "categoryId": "cat-5",
             "name": "Yeni Rakı 100cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 12
         },
@@ -789,7 +974,9 @@
             "id": "r13",
             "categoryId": "cat-5",
             "name": "Beylerbeyi Göbek 35cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 13
         },
@@ -797,7 +984,9 @@
             "id": "r14",
             "categoryId": "cat-5",
             "name": "Beylerbeyi Göbek 50cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 14
         },
@@ -805,7 +994,9 @@
             "id": "r15",
             "categoryId": "cat-5",
             "name": "Beylerbeyi Göbek 70cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 15
         },
@@ -813,7 +1004,9 @@
             "id": "r16",
             "categoryId": "cat-5",
             "name": "Beylerbeyi Göbek 100cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 16
         },
@@ -821,7 +1014,9 @@
             "id": "br1",
             "categoryId": "cat-6",
             "name": "Efes Fıçı 33cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -829,7 +1024,9 @@
             "id": "br2",
             "categoryId": "cat-6",
             "name": "Efes Fıçı 50cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -837,7 +1034,9 @@
             "id": "br3",
             "categoryId": "cat-6",
             "name": "Efes Fıçı 70cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -845,7 +1044,9 @@
             "id": "br4",
             "categoryId": "cat-6",
             "name": "Efes Fıçı 100cl",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -853,7 +1054,9 @@
             "id": "br5",
             "categoryId": "cat-6",
             "name": "Efes +1",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -861,7 +1064,9 @@
             "id": "br6",
             "categoryId": "cat-6",
             "name": "Efes Malt",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -869,7 +1074,9 @@
             "id": "br7",
             "categoryId": "cat-6",
             "name": "Özel Seri",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -877,7 +1084,9 @@
             "id": "br8",
             "categoryId": "cat-6",
             "name": "Glutensiz",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 8
         },
@@ -885,7 +1094,9 @@
             "id": "br9",
             "categoryId": "cat-6",
             "name": "Bomonti Filtresiz",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 9
         },
@@ -893,7 +1104,9 @@
             "id": "br10",
             "categoryId": "cat-6",
             "name": "Bud",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 10
         },
@@ -901,7 +1114,9 @@
             "id": "br11",
             "categoryId": "cat-6",
             "name": "Becks",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 11
         },
@@ -909,7 +1124,9 @@
             "id": "br12",
             "categoryId": "cat-6",
             "name": "Amsterdam",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 12
         },
@@ -917,7 +1134,9 @@
             "id": "br13",
             "categoryId": "cat-6",
             "name": "Miller",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 13
         },
@@ -925,7 +1144,9 @@
             "id": "br14",
             "categoryId": "cat-6",
             "name": "Miller Lime",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 14
         },
@@ -933,7 +1154,9 @@
             "id": "br15",
             "categoryId": "cat-6",
             "name": "Corona",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 15
         },
@@ -941,7 +1164,9 @@
             "id": "br16",
             "categoryId": "cat-6",
             "name": "Belfast",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 16
         },
@@ -949,7 +1174,9 @@
             "id": "br17",
             "categoryId": "cat-6",
             "name": "Stella",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 17
         },
@@ -957,7 +1184,9 @@
             "id": "c1",
             "categoryId": "cat-7",
             "name": "Karışık Çerez",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -965,7 +1194,9 @@
             "id": "c2",
             "categoryId": "cat-7",
             "name": "Antep Fıstığı",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -973,7 +1204,9 @@
             "id": "c3",
             "categoryId": "cat-7",
             "name": "Tuzlu Fıstık",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -981,7 +1214,9 @@
             "id": "c4",
             "categoryId": "cat-7",
             "name": "Buzlu Badem",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -989,7 +1224,9 @@
             "id": "c5",
             "categoryId": "cat-7",
             "name": "Mimoza",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -997,7 +1234,9 @@
             "id": "c6",
             "categoryId": "cat-7",
             "name": "Turşu",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -1005,7 +1244,9 @@
             "id": "ia1",
             "categoryId": "cat-8",
             "name": "Votka Tek",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -1013,7 +1254,9 @@
             "id": "ia2",
             "categoryId": "cat-8",
             "name": "Votka Duble",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -1021,7 +1264,9 @@
             "id": "ia3",
             "categoryId": "cat-8",
             "name": "Chivas Tek",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -1029,7 +1274,9 @@
             "id": "ia4",
             "categoryId": "cat-8",
             "name": "Chivas Duble",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -1037,7 +1284,9 @@
             "id": "ia5",
             "categoryId": "cat-8",
             "name": "Black Label Tek",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -1045,7 +1294,9 @@
             "id": "ia6",
             "categoryId": "cat-8",
             "name": "Black Label Duble",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -1053,7 +1304,9 @@
             "id": "ia7",
             "categoryId": "cat-8",
             "name": "Jack Daniels Tek",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -1061,7 +1314,9 @@
             "id": "ia8",
             "categoryId": "cat-8",
             "name": "Jack Daniels Duble",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 8
         },
@@ -1069,7 +1324,9 @@
             "id": "ia9",
             "categoryId": "cat-8",
             "name": "Chivas 35cl",
+            "name_en": "",
             "description": "Şişe",
+            "description_en": "",
             "price": 0,
             "order": 9
         },
@@ -1077,7 +1334,9 @@
             "id": "ia10",
             "categoryId": "cat-8",
             "name": "Chivas 50cl",
+            "name_en": "",
             "description": "Şişe",
+            "description_en": "",
             "price": 0,
             "order": 10
         },
@@ -1085,7 +1344,9 @@
             "id": "ia11",
             "categoryId": "cat-8",
             "name": "Chivas 70cl",
+            "name_en": "",
             "description": "Şişe",
+            "description_en": "",
             "price": 0,
             "order": 11
         },
@@ -1093,7 +1354,9 @@
             "id": "ia12",
             "categoryId": "cat-8",
             "name": "Chivas 100cl",
+            "name_en": "",
             "description": "Şişe",
+            "description_en": "",
             "price": 0,
             "order": 12
         },
@@ -1101,7 +1364,9 @@
             "id": "k1",
             "categoryId": "cat-9",
             "name": "Mojito",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -1109,7 +1374,9 @@
             "id": "k2",
             "categoryId": "cat-9",
             "name": "Cuba Libre",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -1117,7 +1384,9 @@
             "id": "k3",
             "categoryId": "cat-9",
             "name": "Margarita",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -1125,7 +1394,9 @@
             "id": "k4",
             "categoryId": "cat-9",
             "name": "Gin Tonic",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -1133,7 +1404,9 @@
             "id": "k5",
             "categoryId": "cat-9",
             "name": "Gin Fizz",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -1141,7 +1414,9 @@
             "id": "k6",
             "categoryId": "cat-9",
             "name": "Long Island",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -1149,7 +1424,9 @@
             "id": "sh1",
             "categoryId": "cat-10",
             "name": "Olmeca Tekila",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -1157,7 +1434,9 @@
             "id": "sh2",
             "categoryId": "cat-10",
             "name": "Olmeca Dark Chocolate",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -1165,7 +1444,9 @@
             "id": "sh3",
             "categoryId": "cat-10",
             "name": "Jäger Cold Brew Coffee",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -1173,7 +1454,9 @@
             "id": "sh4",
             "categoryId": "cat-10",
             "name": "Jäger Orange",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -1181,7 +1464,9 @@
             "id": "sh5",
             "categoryId": "cat-10",
             "name": "Jägermeister",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -1189,7 +1474,9 @@
             "id": "sh6",
             "categoryId": "cat-10",
             "name": "Baileys",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -1197,7 +1484,9 @@
             "id": "si1",
             "categoryId": "cat-11",
             "name": "Çay",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -1205,7 +1494,9 @@
             "id": "si2",
             "categoryId": "cat-11",
             "name": "Fincan Çay",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -1213,7 +1504,9 @@
             "id": "si3",
             "categoryId": "cat-11",
             "name": "Nescafe Sütlü",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -1221,7 +1514,9 @@
             "id": "si4",
             "categoryId": "cat-11",
             "name": "Nescafe Sade",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -1229,7 +1524,9 @@
             "id": "si5",
             "categoryId": "cat-11",
             "name": "Türk Kahvesi Sade",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -1237,7 +1534,9 @@
             "id": "si6",
             "categoryId": "cat-11",
             "name": "Türk Kahvesi Orta",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -1245,7 +1544,9 @@
             "id": "si7",
             "categoryId": "cat-11",
             "name": "Türk Kahvesi Şekerli",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -1253,7 +1554,9 @@
             "id": "so1",
             "categoryId": "cat-12",
             "name": "Cola",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -1261,7 +1564,9 @@
             "id": "so2",
             "categoryId": "cat-12",
             "name": "Fanta",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -1269,7 +1574,9 @@
             "id": "so3",
             "categoryId": "cat-12",
             "name": "Sprite",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         },
@@ -1277,7 +1584,9 @@
             "id": "so4",
             "categoryId": "cat-12",
             "name": "Fuse Tea Şeftali",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 4
         },
@@ -1285,7 +1594,9 @@
             "id": "so5",
             "categoryId": "cat-12",
             "name": "Fuse Tea Karpuz",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 5
         },
@@ -1293,7 +1604,9 @@
             "id": "so6",
             "categoryId": "cat-12",
             "name": "Fuse Tea Mango",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 6
         },
@@ -1301,7 +1614,9 @@
             "id": "so7",
             "categoryId": "cat-12",
             "name": "Redbull",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 7
         },
@@ -1309,7 +1624,9 @@
             "id": "so8",
             "categoryId": "cat-12",
             "name": "Redbull Şekersiz",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 8
         },
@@ -1317,7 +1634,9 @@
             "id": "so9",
             "categoryId": "cat-12",
             "name": "Soda",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 9
         },
@@ -1325,7 +1644,9 @@
             "id": "so10",
             "categoryId": "cat-12",
             "name": "Churchill",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 10
         },
@@ -1333,7 +1654,9 @@
             "id": "so11",
             "categoryId": "cat-12",
             "name": "Büyük Su",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 11
         },
@@ -1341,7 +1664,9 @@
             "id": "so12",
             "categoryId": "cat-12",
             "name": "Küçük Su",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 12
         },
@@ -1349,7 +1674,9 @@
             "id": "so13",
             "categoryId": "cat-12",
             "name": "Büyük Şalgam",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 13
         },
@@ -1357,7 +1684,9 @@
             "id": "so14",
             "categoryId": "cat-12",
             "name": "Küçük Şalgam",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 14
         },
@@ -1365,7 +1694,9 @@
             "id": "sr1",
             "categoryId": "cat-13",
             "name": "Quattro Kırmızı",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 1
         },
@@ -1373,7 +1704,9 @@
             "id": "sr2",
             "categoryId": "cat-13",
             "name": "Quattro Pembe",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 2
         },
@@ -1381,7 +1714,9 @@
             "id": "sr3",
             "categoryId": "cat-13",
             "name": "Quattro Beyaz",
+            "name_en": "",
             "description": "",
+            "description_en": "",
             "price": 0,
             "order": 3
         }

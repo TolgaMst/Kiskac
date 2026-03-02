@@ -699,3 +699,126 @@ body {
         padding: 32px 24px;
     }
 }
+
+/* ---- English Fields Toggle ---- */
+.en-fields-toggle {
+    cursor: pointer;
+    color: var(--admin-accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 0;
+    user-select: none;
+}
+
+.en-fields-toggle:hover {
+    opacity: 0.8;
+}
+
+.en-fields.collapsed {
+    display: none;
+}
+
+/* ---- Image Upload Zone ---- */
+.image-upload-zone {
+    border: 2px dashed var(--admin-border);
+    border-radius: var(--admin-radius);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--admin-transition);
+    background: var(--admin-bg);
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-upload-zone:hover,
+.image-upload-zone.dragover {
+    border-color: var(--admin-accent);
+    background: rgba(212, 168, 83, 0.05);
+}
+
+.image-upload-placeholder {
+    color: var(--admin-text-muted);
+}
+
+.image-upload-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.image-upload-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.image-upload-hint {
+    font-size: 0.7rem;
+    margin-top: 4px;
+    opacity: 0.6;
+}
+
+.image-upload-preview {
+    position: relative;
+}
+
+.image-upload-preview img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.image-remove-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--admin-danger);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* ---- Bulk Price Table ---- */
+.bulk-category-header td {
+    background: rgba(212, 168, 83, 0.08);
+    font-weight: 600;
+    color: var(--admin-accent);
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.bulk-price-input {
+    width: 100%;
+    padding: 6px 10px;
+    background: var(--admin-bg);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    color: var(--admin-text);
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    text-align: right;
+    outline: none;
+    transition: var(--admin-transition);
+}
+
+.bulk-price-input:focus {
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.12);
+}
+
+.bulk-price-input.changed {
+    border-color: var(--admin-success);
+    background: rgba(63, 185, 80, 0.05);
+}

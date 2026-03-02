@@ -15,12 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---- LOGIN ----
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const password = document.getElementById('loginPassword').value;
         const data = getMenuData();
 
-        if (password === data.restaurant.adminPassword) {
+        const hashedInput = await hashPassword(password);
+        if (hashedInput === data.restaurant.adminPassword) {
             sessionStorage.setItem('kiskac_admin', 'true');
             showAdmin();
         } else {
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('categoryForm').style.display = 'block';
         document.getElementById('itemForm').style.display = 'none';
         document.getElementById('catName').value = '';
+        document.getElementById('catNameEn').value = '';
         document.getElementById('catIcon').value = '🐟';
         document.getElementById('catOrder').value = '';
         openModal();
@@ -123,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('categoryForm').style.display = 'block';
         document.getElementById('itemForm').style.display = 'none';
         document.getElementById('catName').value = cat.name;
+        document.getElementById('catNameEn').value = cat.name_en || '';
         document.getElementById('catIcon').value = cat.icon;
         document.getElementById('catOrder').value = cat.order;
         openModal();
@@ -223,10 +226,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ).join('');
 
         document.getElementById('itemName').value = '';
+        document.getElementById('itemNameEn').value = '';
         document.getElementById('itemDescription').value = '';
+        document.getElementById('itemDescriptionEn').value = '';
         document.getElementById('itemPrice').value = '';
         document.getElementById('itemImage').value = '';
         document.getElementById('itemOrder').value = '';
+        if (typeof clearImagePreview === 'function') clearImagePreview();
         openModal();
     });
 
@@ -247,10 +253,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ).join('');
 
         document.getElementById('itemName').value = item.name;
+        document.getElementById('itemNameEn').value = item.name_en || '';
         document.getElementById('itemDescription').value = item.description || '';
+        document.getElementById('itemDescriptionEn').value = item.description_en || '';
         document.getElementById('itemPrice').value = item.price > 0 ? item.price : '';
         document.getElementById('itemImage').value = item.image || '';
         document.getElementById('itemOrder').value = item.order;
+        const imageVal = item.image || '';
+        if (imageVal && typeof showImagePreview === 'function') {
+            showImagePreview(imageVal);
+        } else if (typeof clearImagePreview === 'function') {
+            clearImagePreview();
+        }
         openModal();
     };
 
@@ -290,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (currentEditType === 'category') {
             const name = document.getElementById('catName').value.trim();
+            const nameEn = document.getElementById('catNameEn').value.trim();
             const icon = document.getElementById('catIcon').value.trim();
             const order = parseInt(document.getElementById('catOrder').value) || 1;
 
@@ -303,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cat = data.categories.find(c => c.id === currentEditId);
                 if (cat) {
                     cat.name = name;
+                    cat.name_en = nameEn;
                     cat.icon = icon;
                     cat.order = order;
                 }
@@ -312,6 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.categories.push({
                     id: generateId(),
                     name: name,
+                    name_en: nameEn,
                     icon: icon || '📋',
                     order: order
                 });
@@ -319,7 +336,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else if (currentEditType === 'item') {
             const name = document.getElementById('itemName').value.trim();
+            const nameEn = document.getElementById('itemNameEn').value.trim();
             const description = document.getElementById('itemDescription').value.trim();
+            const descriptionEn = document.getElementById('itemDescriptionEn').value.trim();
             const price = parseFloat(document.getElementById('itemPrice').value.replace(',', '.')) || 0;
             const categoryId = document.getElementById('itemCategory').value;
             const image = document.getElementById('itemImage').value.trim();
@@ -334,7 +353,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const item = data.items.find(i => i.id === currentEditId);
                 if (item) {
                     item.name = name;
+                    item.name_en = nameEn;
                     item.description = description;
+                    item.description_en = descriptionEn;
                     item.price = price;
                     item.image = image;
                     item.categoryId = categoryId;
@@ -346,7 +367,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     id: generateId(),
                     categoryId: categoryId,
                     name: name,
+                    name_en: nameEn,
                     description: description,
+                    description_en: descriptionEn,
                     price: price,
                     image: image,
                     order: order
@@ -416,12 +439,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ---- PASSWORD CHANGE ----
-    document.getElementById('changePasswordBtn').addEventListener('click', () => {
+    document.getElementById('changePasswordBtn').addEventListener('click', async () => {
         const currentPw = document.getElementById('currentPassword').value;
         const newPw = document.getElementById('newPassword').value;
         const data = getMenuData();
 
-        if (currentPw !== data.restaurant.adminPassword) {
+        const hashedCurrent = await hashPassword(currentPw);
+        if (hashedCurrent !== data.restaurant.adminPassword) {
             showToast('Mevcut şifre yanlış', 'error');
             return;
         }
@@ -431,11 +455,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        data.restaurant.adminPassword = newPw;
+        data.restaurant.adminPassword = await hashPassword(newPw);
+        data.lastUpdated = Date.now();
         saveMenuData(data);
         document.getElementById('currentPassword').value = '';
         document.getElementById('newPassword').value = '';
         showToast('Şifre başarıyla değiştirildi', 'success');
+        pushToGitHub(data);
     });
 
     // ---- GITHUB SYNC LOGIC ----
@@ -615,6 +641,221 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ---- IMAGE UPLOAD LOGIC ----
+    const imageDropZone = document.getElementById('imageDropZone');
+    const imageFileInput = document.getElementById('imageFileInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const imagePreviewImg = document.getElementById('imagePreviewImg');
+    const imageUploadPlaceholder = document.getElementById('imageUploadPlaceholder');
+    const imageRemoveBtn = document.getElementById('imageRemoveBtn');
+
+    if (imageDropZone) {
+        imageDropZone.addEventListener('click', (e) => {
+            if (e.target !== imageRemoveBtn && !imageRemoveBtn.contains(e.target)) {
+                imageFileInput.click();
+            }
+        });
+
+        imageDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            imageDropZone.classList.add('dragover');
+        });
+        imageDropZone.addEventListener('dragleave', () => {
+            imageDropZone.classList.remove('dragover');
+        });
+        imageDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            imageDropZone.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                processImage(file);
+            }
+        });
+
+        imageFileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) processImage(file);
+        });
+
+        imageRemoveBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clearImagePreview();
+            document.getElementById('itemImage').value = '';
+        });
+    }
+
+    function processImage(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const maxSize = 400;
+
+                if (width > maxSize || height > maxSize) {
+                    if (width > height) {
+                        height = Math.round((height * maxSize) / width);
+                        width = maxSize;
+                    } else {
+                        width = Math.round((width * maxSize) / height);
+                        height = maxSize;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const base64 = canvas.toDataURL('image/jpeg', 0.7);
+                document.getElementById('itemImage').value = base64;
+                showImagePreview(base64);
+
+                const sizeKB = Math.round(base64.length / 1024);
+                if (sizeKB > 100) {
+                    showToast(`Görsel boyutu: ${sizeKB}KB`, 'info');
+                }
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    window.showImagePreview = function (src) {
+        if (!imagePreview) return;
+        imagePreviewImg.src = src;
+        imagePreview.style.display = 'block';
+        imageUploadPlaceholder.style.display = 'none';
+    };
+
+    window.clearImagePreview = function () {
+        if (!imagePreview) return;
+        imagePreviewImg.src = '';
+        imagePreview.style.display = 'none';
+        imageUploadPlaceholder.style.display = 'block';
+        if (imageFileInput) imageFileInput.value = '';
+    };
+
+    document.getElementById('itemImage')?.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        if (val && (val.startsWith('http') || val.startsWith('data:'))) {
+            showImagePreview(val);
+        } else {
+            clearImagePreview();
+        }
+    });
+
+    // ---- BULK PRICE UPDATE ----
+    document.getElementById('bulkPriceBtn')?.addEventListener('click', () => {
+        document.getElementById('bulkPriceSection').style.display = 'block';
+        refreshBulkPriceTable();
+    });
+
+    document.getElementById('bulkPriceCloseBtn')?.addEventListener('click', () => {
+        document.getElementById('bulkPriceSection').style.display = 'none';
+    });
+
+    function refreshBulkPriceTable() {
+        const data = getMenuData();
+        const categories = data.categories.sort((a, b) => a.order - b.order);
+        const tbody = document.getElementById('bulkPriceBody');
+        const filterSelect = document.getElementById('bulkCategoryFilter');
+        const currentFilter = filterSelect.value;
+
+        filterSelect.innerHTML = '<option value="all">Tüm Kategoriler</option>';
+        categories.forEach(cat => {
+            filterSelect.innerHTML += `<option value="${cat.id}" ${cat.id === currentFilter ? 'selected' : ''}>${cat.icon} ${cat.name}</option>`;
+        });
+
+        const filterValue = filterSelect.value;
+        let html = '';
+
+        categories.forEach(cat => {
+            if (filterValue !== 'all' && filterValue !== cat.id) return;
+
+            const items = data.items.filter(i => i.categoryId === cat.id).sort((a, b) => a.order - b.order);
+            if (items.length === 0) return;
+
+            html += `<tr class="bulk-category-header"><td colspan="2">${cat.icon} ${cat.name}</td></tr>`;
+
+            items.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>
+                            <input type="number" class="bulk-price-input"
+                                   data-item-id="${item.id}"
+                                   data-original="${item.price}"
+                                   value="${item.price > 0 ? item.price : ''}"
+                                   placeholder="0.00"
+                                   step="0.01" min="0"
+                                   onchange="this.classList.toggle('changed', this.value != this.dataset.original)">
+                        </td>
+                    </tr>
+                `;
+            });
+        });
+
+        tbody.innerHTML = html;
+    }
+
+    document.getElementById('bulkCategoryFilter')?.addEventListener('change', refreshBulkPriceTable);
+
+    document.getElementById('bulkIncreaseBtn')?.addEventListener('click', () => applyPercentageChange(1));
+    document.getElementById('bulkDecreaseBtn')?.addEventListener('click', () => applyPercentageChange(-1));
+
+    function applyPercentageChange(direction) {
+        const pct = parseFloat(document.getElementById('bulkPercentage').value);
+        if (!pct || pct <= 0) {
+            showToast('Geçerli bir yüzde girin', 'error');
+            return;
+        }
+
+        const inputs = document.querySelectorAll('.bulk-price-input');
+        inputs.forEach(input => {
+            const currentVal = parseFloat(input.value) || 0;
+            if (currentVal > 0) {
+                const multiplier = 1 + (direction * pct / 100);
+                const newVal = Math.round(currentVal * multiplier * 100) / 100;
+                input.value = newVal;
+                input.classList.toggle('changed', input.value != input.dataset.original);
+            }
+        });
+    }
+
+    document.getElementById('bulkPriceSaveBtn')?.addEventListener('click', () => {
+        const data = getMenuData();
+        const inputs = document.querySelectorAll('.bulk-price-input');
+        let changedCount = 0;
+
+        inputs.forEach(input => {
+            const itemId = input.dataset.itemId;
+            const newPrice = parseFloat(input.value) || 0;
+            const item = data.items.find(i => i.id === itemId);
+            if (item && item.price !== newPrice) {
+                item.price = newPrice;
+                changedCount++;
+            }
+        });
+
+        if (changedCount === 0) {
+            showToast('Değişiklik yapılmadı', 'info');
+            return;
+        }
+
+        data.lastUpdated = Date.now();
+        saveMenuData(data);
+        refreshAll();
+        refreshBulkPriceTable();
+        showToast(`${changedCount} ürün fiyatı güncellendi`, 'success');
+        pushToGitHub(data);
+    });
+
+    // GitHub push boyut uyarısı
+    const originalPushToGitHub = pushToGitHub;
 
     // İlk yükleme
     loadRestaurantSettings();
