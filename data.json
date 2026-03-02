@@ -1,19 +1,19 @@
 {
-    "version": 2,
+    "version": 3,
     "restaurant": {
         "name": "Kıskaç Cafe & Bar",
         "slogan": "Denizin En Taze Hali",
         "description": "Deniz ürünleriyle ünlü, eşsiz lezzetlerin adresi",
         "isOpen": true,
-        "phone": "",
-        "address": "",
-        "instagram": "",
-        "adminPassword": "kiskac2024",
-        "email": "",
-        "whatsapp": "",
+        "phone": "+90 (552) 831 70 79",
+        "address": "Kıskaç Cafe & Bar, Mersin",
+        "email": "tlgmst@gmail.com",
+        "instagram": "kiskaccafebar",
         "facebook": "",
-        "mapsLink": "",
-        "openingHours": ""
+        "whatsapp": "05333058733",
+        "mapsLink": "https://maps.app.goo.gl/t4UXmg3SuHdWng7m8",
+        "openingHours": "Pazartesi - Pazar: 12:00 - 01:00",
+        "adminPassword": "kiskac2024"
     },
     "categories": [
         {
