@@ -1130,8 +1130,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 10
+            "price": 220,
+            "order": 10,
+            "image": ""
         },
         {
             "id": "br11",
@@ -1744,5 +1745,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772549495899
+    "lastUpdated": 1772549502132
 }
