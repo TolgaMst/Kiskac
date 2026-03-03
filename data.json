@@ -1482,8 +1482,9 @@
             "name_en": "",
             "description": "Şişe",
             "description_en": "",
-            "price": 0,
-            "order": 11
+            "price": 2400,
+            "order": 11,
+            "image": ""
         },
         {
             "id": "ia12",
@@ -1856,5 +1857,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553154591
+    "lastUpdated": 1772553163567
 }
