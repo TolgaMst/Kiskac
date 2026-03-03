@@ -1757,8 +1757,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 5
+            "price": 100,
+            "order": 5,
+            "image": ""
         },
         {
             "id": "so6",
@@ -1881,5 +1882,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553314823
+    "lastUpdated": 1772553318351
 }
