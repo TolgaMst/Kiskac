@@ -117,7 +117,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             sendOrder: "WhatsApp ile Sipariş",
             emptyCart: "Sepetiniz boş",
             clearCart: "Temizle",
-            orderMessage: "Merhaba, sipariş vermek istiyorum:"
+            orderMessage: "Merhaba, sipariş vermek istiyorum:",
+            tableNumber: "Masa Numarası",
+            tableNumberPlaceholder: "Örn: 5",
+            tableNumberMsg: "Masa No"
         },
         en: {
             open: "Open",
@@ -144,7 +147,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             sendOrder: "Order via WhatsApp",
             emptyCart: "Your cart is empty",
             clearCart: "Clear",
-            orderMessage: "Hello, I would like to order:"
+            orderMessage: "Hello, I would like to order:",
+            tableNumber: "Table Number",
+            tableNumberPlaceholder: "e.g. 5",
+            tableNumberMsg: "Table No"
         }
     };
 
@@ -419,6 +425,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const addToCartText = document.getElementById('addToCartText');
         if (addToCartText) addToCartText.textContent = translations[currentLang].addToCart;
+
+        const tableNumberLabel = document.getElementById('tableNumberLabel');
+        if (tableNumberLabel) tableNumberLabel.textContent = `🪑 ${translations[currentLang].tableNumber}`;
+
+        const tableNumberInput = document.getElementById('tableNumberInput');
+        if (tableNumberInput) tableNumberInput.placeholder = translations[currentLang].tableNumberPlaceholder;
     }
 
     // ─── DİL SEÇİMİ ───
@@ -760,7 +772,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (cart.length === 0) return;
 
-        let message = translations[currentLang].orderMessage + '\n\n';
+        const tableNumber = document.getElementById('tableNumberInput').value.trim();
+
+        let message = translations[currentLang].orderMessage + '\n';
+
+        // Masa numarası
+        if (tableNumber) {
+            message += `🪑 ${translations[currentLang].tableNumberMsg}: ${tableNumber}\n`;
+        }
+
+        message += '\n';
 
         cart.forEach(c => {
             const item = menuData.items.find(i => i.id === c.id);

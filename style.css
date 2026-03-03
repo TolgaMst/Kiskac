@@ -1151,6 +1151,49 @@ body {
     border-radius: 0 0 0 0;
 }
 
+.cart-table-number {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.cart-table-number label {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.cart-table-number input {
+    flex: 1;
+    max-width: 100px;
+    height: 38px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+    transition: var(--transition);
+}
+
+.cart-table-number input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+
+.cart-table-number input:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px var(--shadow-gold);
+}
+
 .cart-total {
     display: flex;
     justify-content: space-between;
