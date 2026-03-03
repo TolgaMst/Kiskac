@@ -842,7 +842,7 @@
             "categoryId": "cat-3",
             "name": "Barbun",
             "name_en": "",
-            "description": "",
+            "description": "kg 1200",
             "description_en": "",
             "price": 700,
             "order": 3,
@@ -1821,5 +1821,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772551616705
+    "lastUpdated": 1772551634305
 }
