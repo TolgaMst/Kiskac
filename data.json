@@ -1669,8 +1669,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 4
+            "price": 100,
+            "order": 4,
+            "image": ""
         },
         {
             "id": "si5",
@@ -1873,5 +1874,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553270056
+    "lastUpdated": 1772553275191
 }
