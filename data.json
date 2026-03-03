@@ -140,8 +140,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 17.97,
-            "order": 2
+            "price": 0,
+            "order": 2,
+            "image": ""
         },
         {
             "id": "m3",
@@ -1757,5 +1758,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772550805474
+    "lastUpdated": 1772550822642
 }
