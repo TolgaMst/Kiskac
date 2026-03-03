@@ -151,7 +151,7 @@
             "name_en": "",
             "description": "korruuukkk",
             "description_en": "",
-            "price": 106.61,
+            "price": 0,
             "order": 3,
             "image": ""
         },
@@ -1758,5 +1758,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772550822642
+    "lastUpdated": 1772550828562
 }
