@@ -1724,8 +1724,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 2
+            "price": 100,
+            "order": 2,
+            "image": ""
         },
         {
             "id": "so3",
@@ -1878,5 +1879,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553298551
+    "lastUpdated": 1772553304215
 }
