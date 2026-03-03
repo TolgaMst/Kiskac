@@ -129,7 +129,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 10,
+            "price": 11.98,
             "order": 1,
             "image": ""
         },
@@ -140,7 +140,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 15,
+            "price": 17.97,
             "order": 2
         },
         {
@@ -150,7 +150,7 @@
             "name_en": "",
             "description": "korruuukkk",
             "description_en": "",
-            "price": 89,
+            "price": 106.61,
             "order": 3,
             "image": ""
         },
@@ -161,7 +161,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 20,
+            "price": 23.96,
             "order": 4
         },
         {
@@ -1735,5 +1735,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772547671182
+    "lastUpdated": 1772547676671
 }
