@@ -1713,8 +1713,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 1
+            "price": 100,
+            "order": 1,
+            "image": ""
         },
         {
             "id": "so2",
@@ -1877,5 +1878,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553292759
+    "lastUpdated": 1772553298551
 }
