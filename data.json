@@ -831,10 +831,11 @@
             "categoryId": "cat-3",
             "name": "Çipura",
             "name_en": "",
-            "description": "",
+            "description": "kg 1200",
             "description_en": "",
-            "price": 0,
-            "order": 2
+            "price": 700,
+            "order": 2,
+            "image": ""
         },
         {
             "id": "b3",
@@ -1818,5 +1819,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772552544368
+    "lastUpdated": 1772552556920
 }
