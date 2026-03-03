@@ -820,10 +820,11 @@
             "categoryId": "cat-3",
             "name": "Levrek",
             "name_en": "",
-            "description": "",
+            "description": "kg 1200",
             "description_en": "",
-            "price": 0,
-            "order": 1
+            "price": 700,
+            "order": 1,
+            "image": ""
         },
         {
             "id": "b2",
@@ -1817,5 +1818,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772552526280
+    "lastUpdated": 1772552544368
 }
