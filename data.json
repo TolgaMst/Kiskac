@@ -129,7 +129,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 120,
+            "price": 0,
             "order": 1,
             "image": ""
         },
@@ -140,7 +140,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 130,
+            "price": 0,
             "order": 2,
             "image": ""
         },
@@ -151,7 +151,7 @@
             "name_en": "",
             "description": "korruuukkk",
             "description_en": "",
-            "price": 130,
+            "price": 0,
             "order": 3,
             "image": ""
         },
@@ -162,7 +162,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 145,
+            "price": 0,
             "order": 4,
             "image": ""
         },
@@ -173,7 +173,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 190,
+            "price": 0,
             "order": 5,
             "image": ""
         },
@@ -184,7 +184,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 155,
+            "price": 0,
             "order": 6,
             "image": ""
         },
@@ -195,7 +195,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 7,
             "image": ""
         },
@@ -206,7 +206,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 140,
+            "price": 0,
             "order": 8,
             "image": ""
         },
@@ -217,7 +217,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 145,
+            "price": 0,
             "order": 9,
             "image": ""
         },
@@ -228,7 +228,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 10,
             "image": ""
         },
@@ -239,7 +239,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 11,
             "image": ""
         },
@@ -250,7 +250,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 140,
+            "price": 0,
             "order": 12,
             "image": ""
         },
@@ -261,7 +261,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 145,
+            "price": 0,
             "order": 13,
             "image": ""
         },
@@ -272,7 +272,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 14,
             "image": ""
         },
@@ -283,7 +283,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 180,
+            "price": 0,
             "order": 15,
             "image": ""
         },
@@ -294,7 +294,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 145,
+            "price": 0,
             "order": 16,
             "image": ""
         },
@@ -305,7 +305,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 140,
+            "price": 0,
             "order": 17,
             "image": ""
         },
@@ -316,7 +316,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 180,
+            "price": 0,
             "order": 18,
             "image": ""
         },
@@ -327,7 +327,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 200,
+            "price": 0,
             "order": 19,
             "image": ""
         },
@@ -338,7 +338,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 20,
             "image": ""
         },
@@ -349,7 +349,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 21,
             "image": ""
         },
@@ -360,7 +360,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 200,
+            "price": 0,
             "order": 22,
             "image": ""
         },
@@ -371,7 +371,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 235,
+            "price": 0,
             "order": 23,
             "image": ""
         },
@@ -382,7 +382,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 160,
+            "price": 0,
             "order": 24,
             "image": ""
         },
@@ -393,7 +393,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 25,
             "image": ""
         },
@@ -404,7 +404,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 26,
             "image": ""
         },
@@ -415,7 +415,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 27,
             "image": ""
         },
@@ -426,7 +426,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 28,
             "image": ""
         },
@@ -437,7 +437,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 29,
             "image": ""
         },
@@ -448,7 +448,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 135,
+            "price": 0,
             "order": 30,
             "image": ""
         },
@@ -459,7 +459,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 250,
+            "price": 0,
             "order": 31,
             "image": ""
         },
@@ -470,7 +470,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 250,
+            "price": 0,
             "order": 32,
             "image": ""
         },
@@ -481,7 +481,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 180,
+            "price": 0,
             "order": 33,
             "image": ""
         },
@@ -492,7 +492,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 160,
+            "price": 0,
             "order": 34,
             "image": ""
         },
@@ -1788,5 +1788,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772552126960
+    "lastUpdated": 1772552131345
 }
