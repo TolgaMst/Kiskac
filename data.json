@@ -1581,8 +1581,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 2
+            "price": 200,
+            "order": 2,
+            "image": ""
         },
         {
             "id": "sh3",
@@ -1865,5 +1866,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553220295
+    "lastUpdated": 1772553228399
 }
