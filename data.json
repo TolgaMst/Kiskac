@@ -1075,8 +1075,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 5
+            "price": 190,
+            "order": 5,
+            "image": ""
         },
         {
             "id": "br6",
@@ -1739,5 +1740,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772549217228
+    "lastUpdated": 1772549474236
 }
