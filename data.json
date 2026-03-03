@@ -13,7 +13,7 @@
         "whatsapp": "+90 533 305 87 33",
         "mapsLink": "https://maps.app.goo.gl/t4UXmg3SuHdWng7m8",
         "openingHours": "Pazartesi - Pazar: 10:00 - 01:00",
-        "adminPassword": "02e6405f18b14e73e9968bd31f5fba0ffacf8ee63c7c53b28a8b0aa9d31c3e41"
+        "adminPassword": "d50d992ba71dcdf395bf54b3d2e75d58636bc2136e2486433b20af8d5a4c7f80"
     },
     "categories": [
         {
@@ -1721,5 +1721,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772475123601
+    "lastUpdated": 1772543470461
 }
