@@ -525,8 +525,9 @@
             "name_en": "",
             "description": "Buharda pişmiş",
             "description_en": "",
-            "price": 0,
-            "order": 3
+            "price": 350,
+            "order": 3,
+            "image": ""
         },
         {
             "id": "s4",
@@ -1790,5 +1791,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772552310288
+    "lastUpdated": 1772552319416
 }
