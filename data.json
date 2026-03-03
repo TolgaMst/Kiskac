@@ -1240,8 +1240,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 3
+            "price": 140,
+            "order": 3,
+            "image": ""
         },
         {
             "id": "c4",
@@ -1754,5 +1755,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772549577291
+    "lastUpdated": 1772549583692
 }
