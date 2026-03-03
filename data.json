@@ -1064,8 +1064,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 12
+            "price": 1850,
+            "order": 12,
+            "image": ""
         },
         {
             "id": "r13",
@@ -1839,5 +1840,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772551826513
+    "lastUpdated": 1772551832953
 }
