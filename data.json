@@ -1438,8 +1438,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 7
+            "price": 420,
+            "order": 7,
+            "image": ""
         },
         {
             "id": "ia8",
@@ -1852,5 +1853,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553047975
+    "lastUpdated": 1772553056335
 }
