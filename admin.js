@@ -111,6 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('catNameEn').value = '';
         document.getElementById('catIcon').value = '🐟';
         document.getElementById('catOrder').value = '';
+        document.getElementById('catImage').value = '';
+        clearCatImagePreview();
         openModal();
     });
 
@@ -128,6 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('catNameEn').value = cat.name_en || '';
         document.getElementById('catIcon').value = cat.icon;
         document.getElementById('catOrder').value = cat.order;
+        document.getElementById('catImage').value = cat.image || '';
+        if (cat.image) {
+            showCatImagePreview(cat.image);
+        } else {
+            clearCatImagePreview();
+        }
         openModal();
     };
 
@@ -306,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('catName').value.trim();
             const nameEn = document.getElementById('catNameEn').value.trim();
             const icon = document.getElementById('catIcon').value.trim();
+            const image = document.getElementById('catImage').value.trim();
             const order = parseInt(document.getElementById('catOrder').value) || 1;
 
             if (!name) {
@@ -320,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     cat.name = name;
                     cat.name_en = nameEn;
                     cat.icon = icon;
+                    cat.image = image;
                     cat.order = order;
                 }
                 showToast('Kategori güncellendi', 'success');
@@ -330,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: name,
                     name_en: nameEn,
                     icon: icon || '📋',
+                    image: image,
                     order: order
                 });
                 showToast('Kategori eklendi', 'success');
@@ -685,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function processImage(file) {
+    function processImage(file, targetInputId = 'itemImage', previewFunc = showImagePreview) {
         const reader = new FileReader();
         reader.onload = (e) => {
             const img = new Image();
@@ -711,8 +722,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.drawImage(img, 0, 0, width, height);
 
                 const base64 = canvas.toDataURL('image/jpeg', 0.7);
-                document.getElementById('itemImage').value = base64;
-                showImagePreview(base64);
+                document.getElementById(targetInputId).value = base64;
+                previewFunc(base64);
 
                 const sizeKB = Math.round(base64.length / 1024);
                 if (sizeKB > 100) {
@@ -747,6 +758,64 @@ document.addEventListener('DOMContentLoaded', () => {
             clearImagePreview();
         }
     });
+
+    // ---- CATEGORY IMAGE UPLOAD LOGIC ----
+    const catImageDropZone = document.getElementById('catImageDropZone');
+    const catImageFileInput = document.getElementById('catImageFileInput');
+    const catImagePreview = document.getElementById('catImagePreview');
+    const catImagePreviewImg = document.getElementById('catImagePreviewImg');
+    const catImageUploadPlaceholder = document.getElementById('catImageUploadPlaceholder');
+    const catImageRemoveBtn = document.getElementById('catImageRemoveBtn');
+
+    if (catImageDropZone) {
+        catImageDropZone.addEventListener('click', (e) => {
+            if (e.target !== catImageRemoveBtn && !catImageRemoveBtn.contains(e.target)) {
+                catImageFileInput.click();
+            }
+        });
+
+        catImageDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            catImageDropZone.classList.add('dragover');
+        });
+        catImageDropZone.addEventListener('dragleave', () => {
+            catImageDropZone.classList.remove('dragover');
+        });
+        catImageDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            catImageDropZone.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                processImage(file, 'catImage', showCatImagePreview);
+            }
+        });
+
+        catImageFileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) processImage(file, 'catImage', showCatImagePreview);
+        });
+
+        catImageRemoveBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clearCatImagePreview();
+            document.getElementById('catImage').value = '';
+        });
+    }
+
+    function showCatImagePreview(src) {
+        if (!catImagePreview) return;
+        catImagePreviewImg.src = src;
+        catImagePreview.style.display = 'block';
+        catImageUploadPlaceholder.style.display = 'none';
+    }
+
+    function clearCatImagePreview() {
+        if (!catImagePreview) return;
+        catImagePreviewImg.src = '';
+        catImagePreview.style.display = 'none';
+        catImageUploadPlaceholder.style.display = 'block';
+        if (catImageFileInput) catImageFileInput.value = '';
+    }
 
     // ---- BULK PRICE UPDATE ----
     document.getElementById('bulkPriceBtn')?.addEventListener('click', () => {

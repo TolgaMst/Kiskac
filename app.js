@@ -464,9 +464,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const hasItems = data.items.some(item => item.categoryId === cat.id);
             if (!hasItems) return;
 
+            const iconHtml = cat.image
+                ? `<div class="category-icon has-image"><img src="${cat.image}" alt="${cat.name}" onerror="this.parentElement.innerHTML='${cat.icon}'"></div>`
+                : `<div class="category-icon">${cat.icon}</div>`;
+
             html += `
                 <div class="category-item" data-category="${cat.id}" onclick="filterCategory('${cat.id}', this)">
-                    <div class="category-icon">${cat.icon}</div>
+                    ${iconHtml}
                     <span class="category-label">${(currentLang === 'en' && cat.name_en) ? cat.name_en : cat.name}</span>
                 </div>
             `;
@@ -500,10 +504,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const catDisplayName = (currentLang === 'en' && cat.name_en) ? cat.name_en : cat.name;
 
+            const sectionIconHtml = cat.image
+                ? `<div class="section-icon has-image"><img src="${cat.image}" alt="${catDisplayName}"></div>`
+                : `<div class="section-icon">${cat.icon}</div>`;
+
             html += `
                 <div class="menu-section" id="section-${cat.id}">
                     <div class="section-header">
-                        <div class="section-icon">${cat.icon}</div>
+                        ${sectionIconHtml}
                         <h2 class="section-title">
                             <span class="section-star">✦ </span>${catDisplayName}<span class="section-star"> ✦</span>
                         </h2>
