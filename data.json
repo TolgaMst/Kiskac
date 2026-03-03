@@ -1790,8 +1790,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 8
+            "price": 160,
+            "order": 8,
+            "image": ""
         },
         {
             "id": "so9",
@@ -1884,5 +1885,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553331855
+    "lastUpdated": 1772553338799
 }
