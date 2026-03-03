@@ -134,6 +134,55 @@
         </footer>
     </div>
 
+    <!-- Item Detail Modal -->
+    <div class="item-modal-overlay" id="itemModalOverlay">
+        <div class="item-modal">
+            <div class="item-modal-image" id="itemModalImage">
+                <button class="item-modal-fav" id="itemModalFav">🤍</button>
+                <button class="item-modal-close" id="itemModalClose">×</button>
+            </div>
+            <div class="item-modal-body">
+                <div class="item-modal-name" id="itemModalName"></div>
+                <div class="item-modal-desc" id="itemModalDesc"></div>
+                <div class="item-modal-footer">
+                    <div class="item-modal-price" id="itemModalPrice"></div>
+                    <button class="add-to-cart-btn" id="addToCartBtn">
+                        🛒 <span id="addToCartText">Sepete Ekle</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <div class="cart-header-left">
+                    <h3 class="cart-title" id="cartTitle">🛒 Sepetim</h3>
+                    <button class="cart-clear-btn" id="cartClearBtn">Temizle</button>
+                </div>
+                <button class="cart-close" id="cartClose">×</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-footer" id="cartFooter">
+                <div class="cart-total">
+                    <span class="cart-total-label" id="cartTotalLabel">Toplam</span>
+                    <span class="cart-total-amount" id="cartTotalAmount">₺0,00</span>
+                </div>
+                <button class="cart-whatsapp-btn" id="cartWhatsappBtn">
+                    💬 <span id="cartWhatsappText">WhatsApp ile Sipariş</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <button class="cart-float-btn" id="cartFloatBtn">
+        🛒
+        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </button>
+
     <!-- Scroll to Top -->
     <button class="scroll-top-btn" id="scrollTopBtn" title="Yukarı çık">↑</button>
 

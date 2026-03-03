@@ -5,6 +5,92 @@ document.addEventListener('DOMContentLoaded', async () => {
     let activeCategory = 'all';
     let currentLang = localStorage.getItem('kiskac_lang') || 'tr';
 
+    // ─── FAVORİLER ───
+    let favorites = JSON.parse(localStorage.getItem('kiskac_favorites') || '[]');
+
+    function isFavorite(itemId) {
+        return favorites.includes(itemId);
+    }
+
+    function toggleFavorite(itemId) {
+        if (isFavorite(itemId)) {
+            favorites = favorites.filter(id => id !== itemId);
+        } else {
+            favorites.push(itemId);
+        }
+        localStorage.setItem('kiskac_favorites', JSON.stringify(favorites));
+    }
+
+    // ─── SEPET ───
+    let cart = JSON.parse(localStorage.getItem('kiskac_cart') || '[]');
+
+    function saveCart() {
+        localStorage.setItem('kiskac_cart', JSON.stringify(cart));
+        updateCartBadge();
+    }
+
+    function addToCart(itemId) {
+        const existing = cart.find(c => c.id === itemId);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ id: itemId, qty: 1 });
+        }
+        saveCart();
+    }
+
+    function removeFromCart(itemId) {
+        cart = cart.filter(c => c.id !== itemId);
+        saveCart();
+    }
+
+    function updateCartQty(itemId, delta) {
+        const existing = cart.find(c => c.id === itemId);
+        if (!existing) return;
+        existing.qty += delta;
+        if (existing.qty <= 0) {
+            removeFromCart(itemId);
+        } else {
+            saveCart();
+        }
+    }
+
+    function clearCart() {
+        cart = [];
+        saveCart();
+    }
+
+    function getCartTotal() {
+        const menuData = getMenuData();
+        let total = 0;
+        cart.forEach(c => {
+            const item = menuData.items.find(i => i.id === c.id);
+            if (item && item.price > 0) {
+                total += item.price * c.qty;
+            }
+        });
+        return total;
+    }
+
+    function getCartCount() {
+        return cart.reduce((sum, c) => sum + c.qty, 0);
+    }
+
+    function updateCartBadge() {
+        const badge = document.getElementById('cartBadge');
+        const floatBtn = document.getElementById('cartFloatBtn');
+        const count = getCartCount();
+        if (count > 0) {
+            badge.textContent = count;
+            badge.style.display = 'flex';
+            floatBtn.classList.add('visible');
+        } else {
+            badge.style.display = 'none';
+            floatBtn.classList.remove('visible');
+        }
+    }
+
+    // ─── ÇEVİRİLER ───
     const translations = {
         tr: {
             open: "Açık",
@@ -23,7 +109,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             social: "Sosyal Medya",
             maps: "Haritada Gör",
             whatsapp: "WhatsApp ile Rezervasyon",
-            askForPrice: "Fiyat Sorunuz"
+            askForPrice: "Fiyat Sorunuz",
+            addToCart: "Sepete Ekle",
+            added: "Eklendi ✓",
+            cart: "Sepetim",
+            total: "Toplam",
+            sendOrder: "WhatsApp ile Sipariş",
+            emptyCart: "Sepetiniz boş",
+            clearCart: "Temizle",
+            orderMessage: "Merhaba, sipariş vermek istiyorum:"
         },
         en: {
             open: "Open",
@@ -42,11 +136,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             social: "Social Media",
             maps: "View on Maps",
             whatsapp: "Reservation via WhatsApp",
-            askForPrice: "Ask for Price"
+            askForPrice: "Ask for Price",
+            addToCart: "Add to Cart",
+            added: "Added ✓",
+            cart: "My Cart",
+            total: "Total",
+            sendOrder: "Order via WhatsApp",
+            emptyCart: "Your cart is empty",
+            clearCart: "Clear",
+            orderMessage: "Hello, I would like to order:"
         }
     };
 
-    // Splash ekranını yönet
+    // ─── SPLASH EKRANI ───
     const splashBtn = document.getElementById('splashBtn');
     const splashScreen = document.getElementById('splashScreen');
     const mainContent = document.getElementById('mainContent');
@@ -69,7 +171,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Dışarı tıklayınca kapat
     infoOverlay.addEventListener('click', (e) => {
         if (e.target === infoOverlay) {
             infoOverlay.classList.remove('active');
@@ -83,7 +184,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         let html = '';
 
-        // Telefon
         if (r.phone) {
             html += `
                 <a href="tel:${r.phone.replace(/\D/g, '')}" class="info-item">
@@ -96,7 +196,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
-        // WhatsApp
         if (r.whatsapp) {
             html += `
                 <a href="https://wa.me/${r.whatsapp.replace(/\D/g, '')}" class="info-item info-whatsapp">
@@ -108,7 +207,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
-        // Email
         if (r.email) {
             html += `
                 <a href="mailto:${r.email}" class="info-item">
@@ -121,7 +219,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
-        // Adres
         if (r.address) {
             html += `
                 <div class="info-item">
@@ -134,7 +231,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
-        // Harita
         if (r.mapsLink) {
             html += `
                 <a href="${r.mapsLink}" target="_blank" class="info-item">
@@ -146,7 +242,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
-        // Çalışma Saatleri
         if (r.openingHours) {
             html += `
                 <div class="info-item">
@@ -159,7 +254,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
-        // Sosyal Medya
         if (r.instagram || r.facebook) {
             html += `
                 <div class="info-item">
@@ -177,7 +271,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         body.innerHTML = html;
 
-        // Modal başlığını çevir
         const header = document.querySelector('.info-header h2');
         if (header) header.textContent = translations[currentLang].businessInfo;
     }
@@ -192,17 +285,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             setTimeout(() => {
                 splashScreen.style.display = 'none';
                 mainContent.classList.add('visible');
-                // Skeleton kısa süre görünür, sonra gerçek içerikle değişir
                 setTimeout(() => {
                     renderCategories(data);
                     renderMenu(data);
                     createBubbles();
+                    updateCartBadge();
                 }, 300);
             }, 400);
         });
     }
 
-    // Scroll to top butonu
+    // Scroll to top
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
@@ -218,7 +311,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Arama fonksiyonu
+    // ─── ARAMA ───
     const searchInput = document.getElementById('menuSearch');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -226,11 +319,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const data = getMenuData();
 
             if (query.length > 0) {
-                // Herhangi bir kategori seçiliyse "Tümü"ne çek (görsel olarak)
                 document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
                 const allTab = document.querySelector('[data-category="all"]');
                 if (allTab) allTab.classList.add('active');
-
                 renderMenu(data, 'all', query);
             } else {
                 renderMenu(data, 'all');
@@ -240,7 +331,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function updateRestaurantInfo(data) {
         const r = data.restaurant;
-        // Splash
         document.getElementById('splashName').textContent = r.name;
         document.getElementById('splashSlogan').textContent = r.slogan || (currentLang === 'tr' ? 'Denizin En Taze Hali' : 'Freshness from the Sea');
 
@@ -255,13 +345,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             statusText.textContent = translations[currentLang].closed;
         }
 
-        // Splash Button
         const splashBtn = document.getElementById('splashBtn');
         if (splashBtn) {
             splashBtn.innerHTML = `${translations[currentLang].viewMenu} <span>→</span>`;
         }
 
-        // Navbar
         document.getElementById('navTitle').textContent = r.name;
         const navStatusDot = document.querySelector('.navbar-status .status-dot');
         const navStatusText = document.querySelector('.navbar-status .status-text');
@@ -273,39 +361,32 @@ document.addEventListener('DOMContentLoaded', async () => {
             navStatusText.textContent = translations[currentLang].closed;
         }
 
-        // Language Switcher State
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === currentLang);
         });
 
-        // Footer
         document.getElementById('footerBrand').textContent = r.name;
 
-        // Footer Description
         const footerDesc = document.querySelector('.footer-text');
         if (footerDesc) {
             footerDesc.textContent = r.description || translations[currentLang].emptyMenu;
         }
 
-        // Footer Copyright
         const footerCopy = document.querySelector('.footer-text[style*="opacity: 0.6"]');
         if (footerCopy) {
             footerCopy.textContent = `© 2026 ${r.name}. ${translations[currentLang].rights}`;
         }
 
-        // Admin Link
         const adminLink = document.querySelector('.footer-link');
         if (adminLink) {
             adminLink.textContent = translations[currentLang].management;
         }
 
-        // Search Placeholder
         const searchInput = document.getElementById('menuSearch');
         if (searchInput) {
             searchInput.placeholder = translations[currentLang].searchPlaceholder;
         }
 
-        // Social Links
         const socialContainer = document.getElementById('socialLinks');
         if (socialContainer) {
             let socialHtml = '';
@@ -318,9 +399,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             socialContainer.innerHTML = socialHtml;
         }
+
+        // Cart çevirilerini güncelle
+        updateCartTranslations();
     }
 
-    // Dil seçimi event listeners
+    function updateCartTranslations() {
+        const cartTitle = document.getElementById('cartTitle');
+        if (cartTitle) cartTitle.textContent = `🛒 ${translations[currentLang].cart}`;
+
+        const cartClearBtn = document.getElementById('cartClearBtn');
+        if (cartClearBtn) cartClearBtn.textContent = translations[currentLang].clearCart;
+
+        const cartTotalLabel = document.getElementById('cartTotalLabel');
+        if (cartTotalLabel) cartTotalLabel.textContent = translations[currentLang].total;
+
+        const cartWhatsappText = document.getElementById('cartWhatsappText');
+        if (cartWhatsappText) cartWhatsappText.textContent = translations[currentLang].sendOrder;
+
+        const addToCartText = document.getElementById('addToCartText');
+        if (addToCartText) addToCartText.textContent = translations[currentLang].addToCart;
+    }
+
+    // ─── DİL SEÇİMİ ───
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const lang = btn.dataset.lang;
@@ -329,18 +430,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentLang = lang;
             localStorage.setItem('kiskac_lang', lang);
 
-            // Tüm sayfayı güncelle
             updateRestaurantInfo(data);
             renderCategories(data);
             renderMenu(data, activeCategory, document.getElementById('menuSearch')?.value.toLowerCase().trim() || '');
         });
     });
 
+    // ─── KATEGORİ RENDER ───
     function renderCategories(data) {
         const container = document.getElementById('categoryScroll');
         const categories = data.categories.sort((a, b) => a.order - b.order);
 
-        // "Tümü" butonu
         let html = `
             <div class="category-item ${activeCategory === 'all' ? 'active' : ''}" data-category="all" onclick="filterCategory('all', this)">
                 <div class="category-icon">📋</div>
@@ -349,7 +449,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
 
         categories.forEach(cat => {
-            // Bu kategoriye ait ürün var mı kontrol et
             const hasItems = data.items.some(item => item.categoryId === cat.id);
             if (!hasItems) return;
 
@@ -364,6 +463,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         container.innerHTML = html;
     }
 
+    // ─── MENÜ RENDER ───
     function renderMenu(data, filterCatId = null, searchQuery = '') {
         const container = document.getElementById('menuContainer');
         const categories = data.categories.sort((a, b) => a.order - b.order);
@@ -374,7 +474,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 .filter(item => item.categoryId === cat.id)
                 .sort((a, b) => a.order - b.order);
 
-            // Arama filtresi
             if (searchQuery) {
                 items = items.filter(item =>
                     item.name.toLowerCase().includes(searchQuery) ||
@@ -412,14 +511,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ? `<div class="item-image"><img src="${item.image}" alt="${itemDisplayName}" onerror="this.src='https://placehold.co/100x100?text=Kıskaç'"></div>`
                     : `<div class="item-image placeholder">🦐</div>`;
 
+                const favIcon = isFavorite(item.id) ? '❤️' : '🤍';
+
                 html += `
-                    <div class="menu-item-card ${item.image ? 'has-image' : ''}">
+                    <div class="menu-item-card ${item.image ? 'has-image' : ''}" data-item-id="${item.id}" onclick="openItemDetail('${item.id}')">
                         ${imageHtml}
                         <div class="item-info">
                             <div class="item-name">${itemDisplayName}</div>
                             ${itemDisplayDesc ? `<div class="item-description">${itemDisplayDesc}</div>` : ''}
                         </div>
                         ${priceDisplay}
+                        <button class="favorite-btn ${isFavorite(item.id) ? 'active' : ''}" onclick="event.stopPropagation(); toggleFav('${item.id}', this)">${favIcon}</button>
                     </div>
                 `;
             });
@@ -442,18 +544,253 @@ document.addEventListener('DOMContentLoaded', async () => {
         container.innerHTML = html;
     }
 
-    // Kategori filtresi — global yapıyoruz
+    // ─── FAVORİ TOGGLE (global) ───
+    window.toggleFav = function (itemId, btnEl) {
+        toggleFavorite(itemId);
+        const isNowFav = isFavorite(itemId);
+        btnEl.textContent = isNowFav ? '❤️' : '🤍';
+        btnEl.classList.toggle('active', isNowFav);
+    };
+
+    // ─── ÜRÜN DETAY MODAL ───
+    let currentDetailItemId = null;
+
+    const itemModalOverlay = document.getElementById('itemModalOverlay');
+    const itemModalClose = document.getElementById('itemModalClose');
+    const itemModalFav = document.getElementById('itemModalFav');
+    const addToCartBtn = document.getElementById('addToCartBtn');
+
+    window.openItemDetail = function (itemId) {
+        const menuData = getMenuData();
+        const item = menuData.items.find(i => i.id === itemId);
+        if (!item) return;
+
+        currentDetailItemId = itemId;
+
+        const imageContainer = document.getElementById('itemModalImage');
+        const itemDisplayName = (currentLang === 'en' && item.name_en) ? item.name_en : item.name;
+        const itemDisplayDesc = (currentLang === 'en' && item.description_en) ? item.description_en : item.description;
+
+        // Görsel
+        const closeBtnHtml = '<button class="item-modal-close" id="itemModalClose" onclick="closeItemDetail()">×</button>';
+        const favBtnHtml = `<button class="item-modal-fav" id="itemModalFav" onclick="toggleModalFav()">${isFavorite(itemId) ? '❤️' : '🤍'}</button>`;
+
+        if (item.image) {
+            imageContainer.innerHTML = `
+                ${favBtnHtml}
+                ${closeBtnHtml}
+                <img src="${item.image}" alt="${itemDisplayName}" onerror="this.style.display='none'">
+            `;
+        } else {
+            imageContainer.innerHTML = `
+                ${favBtnHtml}
+                ${closeBtnHtml}
+                <span class="placeholder-icon">🦐</span>
+            `;
+        }
+
+        // İsim & Açıklama
+        document.getElementById('itemModalName').textContent = itemDisplayName;
+        document.getElementById('itemModalDesc').textContent = itemDisplayDesc || '';
+
+        // Fiyat
+        const priceEl = document.getElementById('itemModalPrice');
+        if (item.price > 0) {
+            priceEl.textContent = `₺${item.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}`;
+            priceEl.classList.remove('no-price');
+        } else {
+            priceEl.textContent = translations[currentLang].askForPrice;
+            priceEl.classList.add('no-price');
+        }
+
+        // Sepete ekle butonu güncelle
+        const addBtn = document.getElementById('addToCartBtn');
+        const addText = document.getElementById('addToCartText');
+        addBtn.classList.remove('added');
+        addText.textContent = translations[currentLang].addToCart;
+
+        // Fiyatsız ürünler için sepet butonu gizle
+        if (item.price <= 0) {
+            addBtn.style.display = 'none';
+        } else {
+            addBtn.style.display = 'flex';
+        }
+
+        // Modalı aç
+        itemModalOverlay.classList.add('active');
+    };
+
+    window.closeItemDetail = function () {
+        itemModalOverlay.classList.remove('active');
+        currentDetailItemId = null;
+    };
+
+    // Modal dışına tıklayınca kapat
+    itemModalOverlay.addEventListener('click', (e) => {
+        if (e.target === itemModalOverlay) {
+            closeItemDetail();
+        }
+    });
+
+    // Modal favori toggle
+    window.toggleModalFav = function () {
+        if (!currentDetailItemId) return;
+        toggleFavorite(currentDetailItemId);
+        const isNowFav = isFavorite(currentDetailItemId);
+
+        // Modal butonunu güncelle
+        const modalFavBtn = document.getElementById('itemModalFav');
+        if (modalFavBtn) modalFavBtn.textContent = isNowFav ? '❤️' : '🤍';
+
+        // Kart butonunu da güncelle
+        const cardBtn = document.querySelector(`.menu-item-card[data-item-id="${currentDetailItemId}"] .favorite-btn`);
+        if (cardBtn) {
+            cardBtn.textContent = isNowFav ? '❤️' : '🤍';
+            cardBtn.classList.toggle('active', isNowFav);
+        }
+    };
+
+    // ─── SEPETE EKLE ───
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+        if (!currentDetailItemId) return;
+
+        addToCart(currentDetailItemId);
+
+        // Buton animasyonu
+        const addBtn = document.getElementById('addToCartBtn');
+        const addText = document.getElementById('addToCartText');
+        addBtn.classList.add('added');
+        addText.textContent = translations[currentLang].added;
+
+        setTimeout(() => {
+            addBtn.classList.remove('added');
+            addText.textContent = translations[currentLang].addToCart;
+        }, 1200);
+    });
+
+    // ─── SEPET MODAL ───
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartFloatBtn = document.getElementById('cartFloatBtn');
+    const cartClose = document.getElementById('cartClose');
+    const cartClearBtn = document.getElementById('cartClearBtn');
+    const cartWhatsappBtn = document.getElementById('cartWhatsappBtn');
+
+    cartFloatBtn.addEventListener('click', () => {
+        renderCart();
+        cartOverlay.classList.add('active');
+    });
+
+    cartClose.addEventListener('click', () => {
+        cartOverlay.classList.remove('active');
+    });
+
+    cartOverlay.addEventListener('click', (e) => {
+        if (e.target === cartOverlay) {
+            cartOverlay.classList.remove('active');
+        }
+    });
+
+    cartClearBtn.addEventListener('click', () => {
+        clearCart();
+        renderCart();
+    });
+
+    function renderCart() {
+        const cartItemsEl = document.getElementById('cartItems');
+        const cartFooter = document.getElementById('cartFooter');
+        const menuData = getMenuData();
+
+        if (cart.length === 0) {
+            cartItemsEl.innerHTML = `
+                <div class="cart-empty">
+                    <div class="cart-empty-icon">🛒</div>
+                    <p>${translations[currentLang].emptyCart}</p>
+                </div>
+            `;
+            cartFooter.style.display = 'none';
+            return;
+        }
+
+        cartFooter.style.display = 'block';
+        let html = '';
+
+        cart.forEach(c => {
+            const item = menuData.items.find(i => i.id === c.id);
+            if (!item) return;
+
+            const itemName = (currentLang === 'en' && item.name_en) ? item.name_en : item.name;
+            const itemPrice = item.price > 0
+                ? `₺${item.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}`
+                : translations[currentLang].askForPrice;
+            const lineTotal = item.price > 0
+                ? ` × ${c.qty} = ₺${(item.price * c.qty).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}`
+                : '';
+
+            html += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${itemName}</div>
+                        <div class="cart-item-price">${itemPrice}${lineTotal}</div>
+                    </div>
+                    <div class="cart-qty-controls">
+                        <button class="cart-qty-btn" onclick="updateCartItem('${c.id}', -1)">−</button>
+                        <span class="cart-qty">${c.qty}</span>
+                        <button class="cart-qty-btn" onclick="updateCartItem('${c.id}', 1)">+</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        cartItemsEl.innerHTML = html;
+
+        // Toplam
+        const total = getCartTotal();
+        document.getElementById('cartTotalAmount').textContent = `₺${total.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}`;
+    }
+
+    window.updateCartItem = function (itemId, delta) {
+        updateCartQty(itemId, delta);
+        renderCart();
+    };
+
+    // ─── WHATSAPP SİPARİŞ ───
+    cartWhatsappBtn.addEventListener('click', () => {
+        const menuData = getMenuData();
+        const r = menuData.restaurant;
+
+        if (cart.length === 0) return;
+
+        let message = translations[currentLang].orderMessage + '\n\n';
+
+        cart.forEach(c => {
+            const item = menuData.items.find(i => i.id === c.id);
+            if (!item) return;
+            const itemName = (currentLang === 'en' && item.name_en) ? item.name_en : item.name;
+            const priceText = item.price > 0
+                ? ` - ₺${(item.price * c.qty).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}`
+                : '';
+            message += `• ${c.qty}x ${itemName}${priceText}\n`;
+        });
+
+        const total = getCartTotal();
+        if (total > 0) {
+            message += `\n${translations[currentLang].total}: ₺${total.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}`;
+        }
+
+        const whatsappNumber = r.whatsapp ? r.whatsapp.replace(/\D/g, '') : '';
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+
+    // ─── KATEGORİ FİLTRESİ (global) ───
     window.filterCategory = function (catId, element) {
         activeCategory = catId;
-        // Active sınıfını güncelle
         document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
         element.classList.add('active');
 
-        // Menüyü güncelle
         const data = getMenuData();
         renderMenu(data, catId, document.getElementById('menuSearch')?.value.toLowerCase().trim() || '');
 
-        // Eğer belirli bir kategori seçildiyse o bölüme scroll
         if (catId !== 'all') {
             setTimeout(() => {
                 const section = document.getElementById(`section-${catId}`);
@@ -475,7 +812,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    // Baloncuk animasyonları
+    // ─── BALONCUK ANİMASYONLARI ───
     function createBubbles() {
         const bubblesContainer = document.getElementById('bubbles');
         if (!bubblesContainer) return;
