@@ -1053,8 +1053,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 3
+            "price": 220,
+            "order": 3,
+            "image": ""
         },
         {
             "id": "br4",
@@ -1737,5 +1738,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772549196236
+    "lastUpdated": 1772549203085
 }
