@@ -1548,8 +1548,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 5
+            "price": 450,
+            "order": 5,
+            "image": ""
         },
         {
             "id": "k6",
@@ -1862,5 +1863,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553199711
+    "lastUpdated": 1772553205375
 }
