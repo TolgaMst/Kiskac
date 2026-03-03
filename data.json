@@ -1691,8 +1691,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 6
+            "price": 110,
+            "order": 6,
+            "image": ""
         },
         {
             "id": "si7",
@@ -1875,5 +1876,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553283831
+    "lastUpdated": 1772553287879
 }
