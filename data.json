@@ -1845,8 +1845,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 13
+            "price": 120,
+            "order": 13,
+            "image": ""
         },
         {
             "id": "so14",
@@ -1889,5 +1890,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553371135
+    "lastUpdated": 1772553379823
 }
