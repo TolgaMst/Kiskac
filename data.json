@@ -1902,7 +1902,7 @@
             "description_en": "",
             "price": 1000,
             "image": "",
-            "order": 4
+            "order": 1
         },
         {
             "id": "id-1772553547550-gn7yno6z7",
@@ -1913,8 +1913,8 @@
             "description_en": "",
             "price": 1200,
             "image": "",
-            "order": 5
+            "order": 1
         }
     ],
-    "lastUpdated": 1772565400288
+    "lastUpdated": 1772565519616
 }
