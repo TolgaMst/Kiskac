@@ -261,8 +261,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 13
+            "price": 145,
+            "order": 13,
+            "image": ""
         },
         {
             "id": "m14",
@@ -1766,5 +1767,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772551070659
+    "lastUpdated": 1772551080875
 }
