@@ -1867,8 +1867,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 1
+            "price": 350,
+            "order": 1,
+            "image": ""
         },
         {
             "id": "sr2",
@@ -1891,5 +1892,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553385911
+    "lastUpdated": 1772553396319
 }
