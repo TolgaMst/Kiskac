@@ -910,8 +910,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 5
+            "price": 250,
+            "order": 5,
+            "image": ""
         },
         {
             "id": "sl6",
@@ -1825,5 +1826,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772551696193
+    "lastUpdated": 1772551702434
 }
