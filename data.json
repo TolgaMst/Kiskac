@@ -1427,8 +1427,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 6
+            "price": 540,
+            "order": 6,
+            "image": ""
         },
         {
             "id": "ia7",
@@ -1851,5 +1852,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553042615
+    "lastUpdated": 1772553047975
 }
