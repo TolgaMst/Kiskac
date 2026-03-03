@@ -161,8 +161,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 23.96,
-            "order": 4
+            "price": 0,
+            "order": 4,
+            "image": ""
         },
         {
             "id": "m5",
@@ -1756,5 +1757,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772549589395
+    "lastUpdated": 1772550805474
 }
