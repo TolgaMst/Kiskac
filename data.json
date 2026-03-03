@@ -1405,8 +1405,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 4
+            "price": 540,
+            "order": 4,
+            "image": ""
         },
         {
             "id": "ia5",
@@ -1849,5 +1850,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772553026927
+    "lastUpdated": 1772553033399
 }
