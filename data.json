@@ -1914,18 +1914,7 @@
             "price": 1200,
             "image": "",
             "order": 1
-        },
-        {
-            "id": "id-1772565560544-90r869pjv",
-            "categoryId": "cat-6",
-            "name": "Mexico Bardağı",
-            "name_en": "",
-            "description": "",
-            "description_en": "",
-            "price": 10,
-            "image": "",
-            "order": 18
         }
     ],
-    "lastUpdated": 1772565853255
+    "lastUpdated": 1772566537783
 }
