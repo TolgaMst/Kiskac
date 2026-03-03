@@ -1009,8 +1009,9 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 0,
-            "order": 7
+            "price": 1790,
+            "order": 7,
+            "image": ""
         },
         {
             "id": "r8",
@@ -1834,5 +1835,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772552686376
+    "lastUpdated": 1772552697072
 }
