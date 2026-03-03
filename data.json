@@ -853,10 +853,11 @@
             "categoryId": "cat-3",
             "name": "Hamsi",
             "name_en": "",
-            "description": "",
+            "description": "kg 800",
             "description_en": "",
-            "price": 0,
-            "order": 4
+            "price": 400,
+            "order": 4,
+            "image": ""
         },
         {
             "id": "sl1",
@@ -1820,5 +1821,5 @@
             "order": 3
         }
     ],
-    "lastUpdated": 1772552572176
+    "lastUpdated": 1772552584976
 }
