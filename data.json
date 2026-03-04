@@ -149,7 +149,7 @@
             "categoryId": "cat-1",
             "name": "Kaya Koruğu",
             "name_en": "",
-            "description": "korruuukkk",
+            "description": "",
             "description_en": "",
             "price": 130,
             "order": 3,
@@ -1916,5 +1916,5 @@
             "order": 1
         }
     ],
-    "lastUpdated": 1772566609334
+    "lastUpdated": 1772621843724
 }
