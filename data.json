@@ -1471,7 +1471,7 @@
             "name_en": "",
             "description": "Şişe",
             "description_en": "",
-            "price": 1800,
+            "price": 2190,
             "order": 10,
             "image": ""
         },
@@ -1916,5 +1916,5 @@
             "order": 1
         }
     ],
-    "lastUpdated": 1784117122060
+    "lastUpdated": 1784117145404
 }
