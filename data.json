@@ -1863,11 +1863,11 @@
         {
             "id": "sr1",
             "categoryId": "cat-13",
-            "name": "Quattro Kırmızı 37,5",
+            "name": "Quattro Kırmızı",
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 500,
+            "price": 390,
             "order": 2,
             "image": ""
         },
@@ -1916,5 +1916,5 @@
             "order": 1
         }
     ],
-    "lastUpdated": 1784117363955
+    "lastUpdated": 1784117382643
 }
