@@ -1284,7 +1284,7 @@
             "name_en": "",
             "description": "",
             "description_en": "",
-            "price": 220,
+            "price": 240,
             "order": 16,
             "image": ""
         },
@@ -1916,5 +1916,5 @@
             "order": 1
         }
     ],
-    "lastUpdated": 1784116792036
+    "lastUpdated": 1784116815078
 }
